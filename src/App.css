@@ -1,3 +1,11 @@
+/* 
+@font-color-bright: '#E4E3FF';
+@font-color-dark: '#4D4A74';
+@bg-gradient-bright: '90deg, #C9C8FF, #FFF0FB';
+@bg-color-dark: '#3D3C5A'; 
+*/
+
+
 *,
 *::before,
 *::after{
@@ -6,21 +14,71 @@
   box-sizing: border-box;
 }
 
+a, li{
+  text-decoration: none;
+  list-style: none;
+  color: inherit;
+}
+
 .App {
-  padding-top: 4rem;
   min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background: #3D3C5A;
+  color: #E4E3FF;
 }
+
+.container{
+  margin: auto;
+  min-width: 300px;
+  max-width: 1020px;
+  width: 90%;
+} 
 
 header{
   width: 100%;
   position: fixed;
   top: 0px;
-  height: 5rem;
-  border: 1px solid red;
+  background: linear-gradient(90deg, #463054, #615FA4);
+}
+
+nav{
+  align-items: center;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links{
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  /* font-style: oblique; */
+}
+
+.Link{
+  position: relative;
+}
+
+.Link::after{
+  content: '';
+  position: absolute; 
+  height: 2px;
+  width:0%;
+  background: #E4E3FF;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all ease-in-out .2s;
+}
+
+.Link:hover::after{
+  content: '';
+  width: 100%;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .btn{
@@ -28,11 +86,88 @@ header{
   padding: .5rem 1rem;
   width: 8rem;
   border-radius: .3rem;
+  color: #E4E3FF;
+  cursor: pointer;
+}
+
+.logo{
+  font-style: italic;
+  font-size: 2rem;
+}
+
+.welcome-s{
+  padding: 6rem 0 4rem 0;
+  background: linear-gradient(90deg, #C9C8FF, #FFF0FB);
+  min-height: 100%;
+}
+
+.welcome-title{
+  color: #7B73D3; 
+}
+
+.title-logo{
+  color: #634AAC;
+}
+
+.welcome-s-content{
+  margin-top: 2rem;
+  display:flex;
+  flex-wrap:wrap-reverse ;
+  justify-content: center;
+}
+
+.welcome-btn{
+  align-self: flex-end;
+  background: #F4A100;
+  font-size: 1.2rem;
+}
+
+.welcome-content-left{
+  margin: 2rem;
+  font-family: 'Poppins light', sans-serif;
+  letter-spacing: .5px;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.welcome-content-right{
+  display: flexbox;
+  flex-shrink: calc(400px);
+  min-width:400px;
+  width: 50%;
 }
 
 footer{
   height: 5rem;
-  /* align-items: center; */
+  align-items: center;
+}
+
+@media screen and (max-width: 1020px) {
+  .welcome-s-content{
+    flex-direction:column-reverse;
+    flex-wrap: wrap-reverse;
+    justify-content: space-between;
+  }
+
+  .welcome-btn{
+    align-self: center;
+  }
+
+  .welcome-content-left{
+    text-align: center;
+    margin: 0px;
+    height: 15rem;
+    /* flex: 1; */
+  }
+
+  .welcome-content-right{
+    align-self: center;
+    width: 90%;
+    
+  }
 }
 
 /* .App-link {
