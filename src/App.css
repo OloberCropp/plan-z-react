@@ -41,7 +41,15 @@ header{
   width: 100%;
   position: fixed;
   top: 0px;
-  background: linear-gradient(90deg, #463054, #615FA4);
+  background: url('./img/navbg.svg') center bottom repeat-x;
+  filter: opacity(.9);
+  transition: all .5s ease-in-out .3s;
+  /* background-size: 70%; */
+  /* background: linear-gradient(90deg, #463054, #615FA4); */
+}
+
+.header-stretch{
+  background-size: 100vw 100vh;
 }
 
 nav{
@@ -96,7 +104,9 @@ nav{
 }
 
 .welcome-s{
-  padding: 6rem 0 4rem 0;
+  padding: 6rem 0 4rem;
+  /* background: url('./img/bg-light-wavy.svg') left bottom no-repeat;
+  background-size: 100% 100%; */
   background: linear-gradient(90deg, #C9C8FF, #FFF0FB);
   min-height: 100%;
 }
@@ -114,6 +124,7 @@ nav{
   display:flex;
   flex-wrap:wrap-reverse ;
   justify-content: center;
+  align-items: center;
 }
 
 .welcome-btn{
@@ -126,7 +137,7 @@ nav{
   margin: 2rem;
   font-family: 'Poppins light', sans-serif;
   letter-spacing: .5px;
-  height: 20rem;
+  height: 18rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -139,6 +150,98 @@ nav{
   min-width:400px;
   width: 50%;
 }
+
+.Recent-s{
+  /* background: linear-gradient(90deg, #4C4A9E, #732C5F); */
+  background-color: whitesmoke;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  padding: 3rem 0;
+}
+
+.calendar{
+  width: 70%;
+  margin: auto;
+  position: relative;
+  z-index: 3;
+}
+
+.calendar-absolute-bg{
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  width:100%;
+  height:400px;
+  border-radius: .7rem;
+  background: rgba(72, 44, 94, 0.25);
+}
+
+.calendar-header{
+  background: rgba(52, 38, 63, .7);
+  border-radius: .7rem;
+  padding: .4rem;
+}
+
+.calendar-title{
+  text-transform: uppercase;
+  font-family: 'Poppins light', sans-serif;
+  font-size: 1.7rem;
+  letter-spacing: 2px;
+}
+
+.calendar-table{
+  background: rgba(77, 74, 116, 0.5);
+  border-radius: .7rem;
+  padding: .6rem;
+  width: 700px;
+  min-width: 450px;
+  margin: 1rem 1rem 0 -100px;
+}
+
+.calendar-table-title{
+  font-family: 'Poppins thin';
+  font-size: 1.4rem;
+  margin-bottom: .5rem;
+}
+
+.calendar-table-inner{
+  display: grid;
+  grid-template: 
+  'box1 box2 box3 box4 box5 box6 box7'
+  'box8 box2 box3 box4 box5 box6 box14'
+  'box15 box16 box17 box18 box19 box20 box21'
+  'box22 box23 box24 box25 box26 box27 box28'
+  'box29 box30 box31 box32 box33 box34 box35';
+  padding: .6rem;
+  gap: .2rem;
+  /* width: fit-content; */
+  border-radius: .7rem;
+  background: rgba(77, 74, 116, 0.5);
+}
+
+.calendar-day{
+  border-radius: .3rem;
+  /* width: 5.5rem; */
+  width: 1fr;
+  padding: .1rem;
+  min-width: 2rem;
+  cursor: pointer;
+  border: 1px solid rgba(245, 245, 245, 0);
+  background-color: rgba(245, 245, 245, 0);
+  transition: all .1s ease-in;
+}
+
+.calendar-day:hover{
+  transform: scale(1.4);
+  background-color: whitesmoke;
+  border: 1px solid rgba(245, 245, 245, 0.6);
+}
+
+.calendar-day:active{
+  transform: scale(.9);
+}
+
 
 footer{
   height: 5rem;
@@ -158,7 +261,7 @@ footer{
 
   .welcome-content-left{
     text-align: center;
-    margin: 0px;
+    margin: 2rem 0 0 0;
     height: 15rem;
     /* flex: 1; */
   }
@@ -166,7 +269,6 @@ footer{
   .welcome-content-right{
     align-self: center;
     width: 90%;
-    
   }
 }
 

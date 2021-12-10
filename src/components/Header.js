@@ -1,6 +1,6 @@
 import Linkk from './Links'
 
-const Header = () => {
+const Header = ({Checked, onChange}) => {
     return (
         <header>
 
@@ -14,6 +14,7 @@ const Header = () => {
                     <Linkk linkTo='#' text='tools' />
                     <Linkk linkTo='#' text='files' />
                     <Linkk linkTo='#' text='my friend'/>
+                    <input type="checkbox" checked={Checked} onChange={onChange} style={{alignSelf:'center', backgroundColor:'red'}} />
                 
                 </div>
 
