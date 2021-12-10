@@ -3,7 +3,7 @@ import Calendar from "./Calendar";
 const SectionRecent = () => {
     return (
         <section className='Recent-s'>
-            {/* <div className="container"> */}
+
                 <h2 className='Recent-title'>Recently Visited</h2>
                     
                 <div className="Recent-s-content">
@@ -13,8 +13,7 @@ const SectionRecent = () => {
                 </div>
                 
                 </div>
-
-            {/* </div> */}
+                
         </section>
     )
 }

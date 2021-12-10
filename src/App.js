@@ -28,6 +28,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <div className="top-line" style={{height:'1px'}} />
         <Header onCheck={isExist} onChange={()=>setIsExist(!isExist)} />
         <Routes>
             <Route 
