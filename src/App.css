@@ -155,17 +155,31 @@ nav{
   width: 50%;
 }
 
-.Recent-s{
+/* Main section styles */
+
+.calendar-items-container{
+  display: flex;
+  /* flex-wrap: wrap; */
+}
+
+.main-section{
   /* background: linear-gradient(90deg, #4C4A9E, #732C5F); */
-  background-color: whitesmoke;
+  background: linear-gradient(90deg, #9493eb, #c169cd);
   width: 100%;
   height: 100%;
   min-height: 100vh;
   padding: 3rem 0;
 }
 
+.main-section-title{
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 3rem;
+}
+
 .calendar{
   width: 70%;
+  min-width: 500px;
   margin: auto;
   position: relative;
   z-index: 3;
@@ -185,84 +199,162 @@ nav{
   background: rgba(52, 38, 63, .7);
   border-radius: .7rem;
   padding: .4rem;
-}
-
-.calendar-title{
   text-transform: uppercase;
   font-family: 'Poppins light', sans-serif;
   font-size: 1.7rem;
-  letter-spacing: 2px;
-}
-
-.calendar-table{
-  background: rgba(77, 74, 116, 0.5);
-  border-radius: .7rem;
-  padding: .6rem;
-  width: 700px;
-  min-width: 450px;
-  margin: 1rem 1rem 0 -100px;
-}
-
-.calendar-table-title{
-  font-family: 'Poppins thin';
-  font-size: 1.4rem;
-  margin-bottom: .5rem;
+  letter-spacing: 10px;
 }
 
 .calendar-table-inner{
-  display: grid;
-  grid-template-areas: 
-  'box1 box2 box3 box4 box5 box6 box7'
-  'box8 box2 box3 box4 box5 box6 box14'
-  'box15 box16 box17 box18 box19 box20 box21'
-  'box22 box23 box24 box25 box26 box27 box28'
-  'box29 box30 box32 box32 box32 box32 box32';
   padding: .6rem;
-  gap: .2rem;
   border-radius: .7rem;
   background: rgba(77, 74, 116, 0.5);
-  position: relative;
+  margin: 1rem 1rem 0 -10vw;
+  width: 90%;
+  min-width:400px;
+  transition: all 0.3s ease-in-out;
 }
 
-.calDayInner{
-  position: absolute;
-  font-weight: lighter;
-  font-style: italic;
-  bottom: 1rem;
-  right: 1rem;
-  cursor: pointer;
-  transition: all .2s ease-in-out;
-}
+.calendar-table-inner:hover{
+  transform: scale(1.05);
+}  
 
-.calDayInner:hover{
-  transform: scale(1.2)translate(-1rem, -.4rem);
-}
-
-.calendar-day{
+.react-calendar__navigation{
+  width:100%;
+  height: 2rem;
+  display: flex;
+  flex-direction: row;
+  background:rgba(28, 20, 51, 0.2);
   border-radius: .3rem;
-  width: 5.7rem;
+  justify-content: space-between;
+  transition: all .3s ease-in-out;
+}
+.react-calendar__navigation:hover{
+  transform: scale(1.1);
+}
+.react-calendar__navigation button{
+  width: 4rem;
+  border: none;
+  padding: .2rem;
+  background:rgba(28, 20, 51, 0);
+  border-radius: .3rem;
+  color: inherit;
+  transition: all .2s ease-in;
+}
+
+.react-calendar__navigation button:hover{
+  background:rgba(28, 20, 51, 0.4);
+  transform: scale(1.1);
+}
+
+.react-calendar__navigation__label{
+  padding: .2rem;
+  background:rgba(45, 1, 176, 0.4);
+  border-radius: .3rem;
+  pointer-events: none;
+}
+
+.react-calendar__month-view__weekdays *{
+  text-decoration: none;
+}
+
+.react-calendar__month-view__days{
+  background: rgba(77, 74, 116, 0.5);
+  border-radius: .7rem;
+  padding: .6rem;
+  width: 100%;
+  flex-flow: row;
+  transition: all .3s ease-in-out;
+}
+
+.react-calendar__month-view__days:hover{
+  transform: scale(1.05);
+}
+
+.react-calendar__month-view__days button{
+  font-weight: bolder;
+  border-radius: .3rem;
+  color: inherit;
+  width: 4rem;
+  height: 4rem;
   padding: .1rem 0;
   cursor: pointer;
+  font-size: 2rem;
+  transform: scale(.96);
   border: 1px solid rgba(245, 245, 245, 0);
-  background-color: rgba(245, 245, 245, 0);
+  background-color: rgba(28, 20, 51, 0.4);
   transition: all .1s ease-in;
 }
 
-.calendar-day:hover{
-  transform: scale(1.4);
-  background-color: whitesmoke;
+.react-calendar__month-view__days button:hover{
+  transform: scale(1.2);
+  background-color: rgba(28, 20, 51, 0.9);
   border: 1px solid rgba(245, 245, 245, 0.6);
 }
 
-.calendar-day:active{
+.react-calendar__month-view__days button:active{
   transform: scale(.9);
 }
 
+/* Main calendar TasksMenu styles*/
+
+.tasks{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  height: 100%;
+  margin: 1rem -5vw 0 0;
+  padding: .6rem;
+  border-radius: .3rem;
+  background:rgba(28, 20, 51, 0.4);
+  transition: all .4s ease-in-out;
+}
+
+.tasks:hover{
+  transform: scale(1.1)translate(10px, 18px);
+}
+
+.task{
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: .6rem;
+  border-radius: .3rem;
+  background:rgba(28, 20, 51, 0.4);
+  position: relative;
+  transition: all .1s ease-in-out;
+  margin: .1rem 0;
+}
+
+.task:hover{
+  transform: scale(1.1);
+}
+
+.fa-skull{
+  position: absolute;
+  right: .5rem;
+  /* top: 50%;
+  transform: translateY(-50%); */
+  color:rgb(116, 72, 249); 
+  margin: 1rem 1rem 0 0;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all .1s ease-in;
+}
+
+.fa-skull:hover{
+  transform: scale(1.4);
+}
+
+/* About screen styles */
 .about-screen{
   padding: 6rem 0 4rem 0 ;
   border-radius: .4rem;
   background: rgba(0, 0, 0, 0.317)  
 }
+
+/* Footer styles */
 
 footer{
   height: 5rem;
