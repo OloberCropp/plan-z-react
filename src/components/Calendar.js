@@ -27,30 +27,10 @@ const Calendar = ({curMonthYear}) => {
                     <div className="calendar-table-inner">
                         {/* <CalendarDay dateDay={1} /> */}
                     {month.map((day) => {
-                        if(day%7 && day !== 6 && day !== 13 && day !== 20 && day !== 27){
-                            switch(day){
-                                case (1 || 8 || 22 || 29): 
-                                weekDay='mon.'; 
-                                break;
-                                case (2 || 9 || 23 || 30): 
-                                weekDay='tue.'; 
-                                break;
-                                case (3 || 10 || 24 || 31): 
-                                weekDay='wed.'; 
-                                break;
-                                case (4 || 11 || 25): 
-                                weekDay='thu.';
-                                break;
-                                case (5 || 12 || 26): 
-                                weekDay='fri.'; 
-                                break;
-                                case (6 || 13 || 27): 
-                                weekDay='sat.'; 
-                                break;
-                                case (7 || 14 || 28): 
-                                weekDay='sun.'; 
-                                break;
-                            }
+
+                        switch(day){
+                            case 1: case 8: case 15: case 22: case 29: 
+                            weekDay='mon.'; 
                             return (<CalendarDay 
                                 dateDay={day} 
                                 key={day-1} 
@@ -58,12 +38,64 @@ const Calendar = ({curMonthYear}) => {
                                 weekDayDot={weekDay} 
                                 calTodayTasks={calTodayTasks} 
                                 />)
-                        }else{
+
+                            case 2: case 9: case 16: case 23: case 30:
+                            weekDay='tue.';
                             return (<CalendarDay 
                                 dateDay={day} 
                                 key={day-1} 
-                                weekDayDot={weekDay}
-                                calDayBG={weekendDayBG} 
+                                calDayBG={workingDayBG}
+                                weekDayDot={weekDay} 
+                                calTodayTasks={calTodayTasks} 
+                                />) 
+
+                            case 3: case 10: case 17: case 24: case 31:
+                            weekDay='wed.'; 
+                            return (<CalendarDay 
+                                dateDay={day} 
+                                key={day-1} 
+                                calDayBG={workingDayBG}
+                                weekDayDot={weekDay} 
+                                calTodayTasks={calTodayTasks} 
+                                />)
+
+                            case 4: case 11: case 18: case 25:
+                            weekDay='thu.';
+                            return (<CalendarDay 
+                                dateDay={day} 
+                                key={day-1} 
+                                calDayBG={workingDayBG}
+                                weekDayDot={weekDay} 
+                                calTodayTasks={calTodayTasks} 
+                                />)
+
+                            case 5: case 12: case 19: case 26:
+                            weekDay='fri.'; 
+                            return (<CalendarDay 
+                                dateDay={day} 
+                                key={day-1} 
+                                calDayBG={workingDayBG}
+                                weekDayDot={weekDay} 
+                                calTodayTasks={calTodayTasks} 
+                                />)
+
+                            case 6: case 13: case 20: case 27:
+                            weekDay='sat.'; 
+                            return (<CalendarDay 
+                                dateDay={day} 
+                                key={day-1} 
+                                calDayBG={weekendDayBG}
+                                weekDayDot={weekDay} 
+                                calTodayTasks={calTodayTasks} 
+                                />)
+                                
+                            case 7: case 14: case 21: case 28:
+                            weekDay='sun.'; 
+                            return (<CalendarDay 
+                                dateDay={day} 
+                                key={day-1} 
+                                calDayBG={weekendDayBG}
+                                weekDayDot={weekDay} 
                                 calTodayTasks={calTodayTasks} 
                                 />)
                         }

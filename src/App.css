@@ -240,7 +240,7 @@ nav{
 
 .calendar-day{
   border-radius: .3rem;
-  width: 1fr;
+  width: 5.7rem;
   padding: .1rem 0;
   cursor: pointer;
   border: 1px solid rgba(245, 245, 245, 0);
