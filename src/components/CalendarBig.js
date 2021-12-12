@@ -1,19 +1,13 @@
 // import CalendarDay from "./CalendarDay";
 import Calendar from 'react-calendar';
 
-const CalendarBig = ({ setDate, date }) => {
-    
+const CalendarBig = ({ setDate, date, calendarRange }) => {
     return (
                 <div className="calendar-table-inner">
 
                     <div className='calendar-container'>
-                        <Calendar onChange={setDate} value={date} />
+                        <Calendar onChange={setDate} value={date} selectRange={calendarRange} />
                     </div>
-
-                    <p className='text-center'>
-                        <span className='bold'>Selected Date:</span>{' '}
-                        {date.toDateString()}
-                    </p>
 
                 </div>
     )

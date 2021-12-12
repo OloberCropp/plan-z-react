@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'; 
 
-const Linkk = ({LinkClass, text, linkTo}) => {
+const Linkk = ({linkClass, title, linkTo}) => {
     return (
-        <Link className={LinkClass+' '+' Link'} to={linkTo}>{text}</Link>
+        <Link className={linkClass+' Link'} to={linkTo}>{title}</Link>
     )
 }
 

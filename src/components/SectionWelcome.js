@@ -7,7 +7,7 @@ const SectionWelcome = ({onClick}) => {
         <section className='welcome-s'>
             {/* <div className="container"> */}
                 <h2 className='welcome-title'>Plan as you should with.. 
-                    <e className='logo title-logo'>PlanZ</e>
+                    <span className='logo title-logo'>PlanZ</span>
                 </h2>
                     
                 <div className="welcome-s-content">
@@ -22,7 +22,7 @@ const SectionWelcome = ({onClick}) => {
                         </h3>
 
                         <h3>Bring scripts in your life 
-                            <ew style={{color:'#B157A8'}}> for free!!</ew>
+                            <span style={{color:'#B157A8'}}> for free!!</span>
                         </h3>
 
                         <Button 

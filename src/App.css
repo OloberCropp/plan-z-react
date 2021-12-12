@@ -20,8 +20,8 @@ a, li{
   color: inherit;
 }
 
-body{
-  
+input:focus, textarea:focus, select:focus{
+  outline: none;
 }
 
 .App {
@@ -178,6 +178,7 @@ nav{
 }
 
 .calendar{
+  max-width: 800px;
   width: 70%;
   min-width: 500px;
   margin: auto;
@@ -209,19 +210,25 @@ nav{
   padding: .6rem;
   border-radius: .7rem;
   background: rgba(77, 74, 116, 0.5);
-  margin: 1rem 1rem 0 -10vw;
-  width: 90%;
+  margin: 1rem 1rem 0 -5vw;
+  width: 100%;
+  height: fit-content;
+  max-width: 700px;
   min-width:400px;
   transition: all 0.3s ease-in-out;
 }
 
 .calendar-table-inner:hover{
-  transform: scale(1.05);
+  transform: scale(1.05)translate(-10px, 10px);
 }  
+
+.react-calendar__navigation *{
+  font-size: 1.6rem;
+}
 
 .react-calendar__navigation{
   width:100%;
-  height: 2rem;
+  height: 100%;
   display: flex;
   flex-direction: row;
   background:rgba(28, 20, 51, 0.2);
@@ -230,7 +237,7 @@ nav{
   transition: all .3s ease-in-out;
 }
 .react-calendar__navigation:hover{
-  transform: scale(1.1);
+  transform: scale(1.05)translateY(-5px);
 }
 .react-calendar__navigation button{
   width: 4rem;
@@ -268,10 +275,12 @@ nav{
 }
 
 .react-calendar__month-view__days:hover{
-  transform: scale(1.05);
+  transform: scale(1.05)translate(-10px, 10px);
 }
 
 .react-calendar__month-view__days button{
+  font-family: 'Poppins';
+  font-size: 1.6rem;
   font-weight: bolder;
   border-radius: .3rem;
   color: inherit;
@@ -279,9 +288,8 @@ nav{
   height: 4rem;
   padding: .1rem 0;
   cursor: pointer;
-  font-size: 2rem;
   transform: scale(.96);
-  border: 1px solid rgba(245, 245, 245, 0);
+  border: none;
   background-color: rgba(28, 20, 51, 0.4);
   transition: all .1s ease-in;
 }
@@ -289,7 +297,6 @@ nav{
 .react-calendar__month-view__days button:hover{
   transform: scale(1.2);
   background-color: rgba(28, 20, 51, 0.9);
-  border: 1px solid rgba(245, 245, 245, 0.6);
 }
 
 .react-calendar__month-view__days button:active{
@@ -302,13 +309,24 @@ nav{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 30%;
+  min-width: 300px;
+  width: 60%;
   height: 100%;
+  max-height: 500px;
   margin: 1rem -5vw 0 0;
   padding: .6rem;
   border-radius: .3rem;
   background:rgba(28, 20, 51, 0.4);
+  overflow: hidden;
   transition: all .4s ease-in-out;
+}
+
+.tasksWrapper{
+  overflow-y: scroll;
+  width: 100%;
+  height: 100%;
+  padding-right: 25px;
+  box-sizing: content-box;
 }
 
 .tasks:hover{
@@ -323,28 +341,141 @@ nav{
   border-radius: .3rem;
   background:rgba(28, 20, 51, 0.4);
   position: relative;
-  transition: all .1s ease-in-out;
-  margin: .1rem 0;
+  transition: all .2s ease-in-out;
+  margin: .3rem 0;
+}
+
+.task-remind{
+  /* background: linear-gradient(90deg, rgba(119, 0, 255, 0.4), rgba(242, 0, 255, 0.1)) */
+  border-left: 2px solid rgb(136, 255, 0);
 }
 
 .task:hover{
-  transform: scale(1.1);
+  transform: scale(1.05)translateX(10px);
+}
+
+.task-date{
+  font-style: italic;
+  color: rgb(86, 255, 168, .4);
+}
+
+.createTaskBtn{
+  display: block;
+  font-size: 1rem;
+  font-weight: bolder;
+  border: 1px solid #E4E3FF;
+  text-transform: uppercase;
+  width: 95%;
+  padding: .8rem;
+  margin: .4rem 0;
+  background:rgba(28, 20, 51, 0.4);
+  transition: all .2s ease-in;
+}
+
+.createTaskBtn:hover{
+  transform: scale(1.06)translateX(8px);
 }
 
 .fa-skull{
   position: absolute;
-  right: .5rem;
-  /* top: 50%;
-  transform: translateY(-50%); */
-  color:rgb(116, 72, 249); 
-  margin: 1rem 1rem 0 0;
+  right: 1rem;
+  top: 50%;
+  color:rgb(110, 249, 72); 
+  transform: translateY(-50%);
+  /* margin: 1rem 1rem 0 0; */
   font-size: 1.5rem;
   cursor: pointer;
   transition: all .1s ease-in;
 }
 
 .fa-skull:hover{
-  transform: scale(1.4);
+  transform: scale(1.2)translateY(-50%);
+}
+
+/* Add new task */
+.add-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  padding: .6rem;
+  border-radius: .3rem;
+  background:rgba(28, 20, 51, 0.4);
+}
+
+.form-control{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.btn-block{
+  display: block;
+  background: rgba(19, 0, 38, 0.6);
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.form-control input{
+  border: none;
+  width: 100%;
+  padding: .6rem;
+  border-radius: .3rem;
+  background: rgba(37, 32, 48, 0.5);
+  color: #E4E3FF;
+  transition: all .2s ease-in;
+}
+
+.form-control input:hover, textarea:hover{
+  transform: scale(1.06);
+}
+
+.form-control input:focus{
+  transform: scale(1.1);
+  background: rgba(37, 32, 48, 1);
+}
+
+.form-checkbox{
+  display: flex;
+  align-items: center;
+}
+
+.task-importance{
+  display: flex;
+}
+
+.task-title{
+  font-size: 1.2rem;
+}
+
+.show-task-title{
+  font-size: 1.2rem;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  line-height: 1.4rem;
+  width:80%;
+}
+
+.show-task-details{
+  font-size: .9rem;
+  font-weight: normal;
+  width: 80%;
+}
+
+.task-details{
+  font-family: inherit;
+  font-size: .9rem;
+  resize: none;
+  border: none;
+  width: 100%;
+  padding: .6rem;
+  border-radius: .3rem;
+  background: rgba(37, 32, 48, 0.5);
+  color: #E4E3FF;
+  height: 100%;
+  min-height: 5rem;
+  max-height: 300px;
+  transition: all .2s ease-in;
 }
 
 /* About screen styles */

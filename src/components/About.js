@@ -9,7 +9,7 @@ const About = () => {
                 PointInGrave@gmail.com <br />
                 Leonenko Oleg
                 </h3>
-            <Linkk linkTo='/' text='back' />
+            <Linkk linkTo='/' title='back' />
         </div>
     )
 }
