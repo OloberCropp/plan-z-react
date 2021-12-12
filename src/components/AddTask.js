@@ -39,7 +39,7 @@ const AddTask = ({onAdd}) => {
                 <label>Add title</label>
                 <input 
                 className='task-title'
-                type="title" 
+                type="text" 
                 placeholder='project meeting' 
                 value={title}
                 onChange={(e)=>settitle(e.target.value)}

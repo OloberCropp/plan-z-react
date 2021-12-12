@@ -15,8 +15,8 @@ function App() {
   
   const [date, setDate] = useState(new Date());
   const [isExist, setIsExist] = useState(false);
-  // const [calendarRange, setCalendarRange] = useState();
-  // console.log(calendarRange);
+
+  console.log('rerender has been made');
 
   const getStarted = () =>{
     if(isExist){
@@ -31,32 +31,53 @@ function App() {
     {id:'1',
     title:'4th aug at 11am',
     details:'Shut the fuck up aaaaaam Shut the fuck up Shut the fuck up Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up',
-    dateOn:'4th aug at 11am',
+    dateOn:'Sun Dec 05 2021',
     reminder: false,  
     },
     {id:'2',
     title:'Just go away pls..',
     details:'No.. don\'t.. no need for this c\'mon..',
-    dateOn:'5th aug at 4pm',
+    dateOn:'Sun Dec 12 2021',
+    reminder: false,  
+    },
+    {id:'5',
+    title:'Just go away pls..',
+    details:'No.. don\'t.. no need for this c\'mon..',
+    dateOn:'Sun Dec 12 2021',
+    reminder: false,  
+    },
+    {id:'6',
+    title:'Aaaaaaaaaaaa..',
+    details:'No.. No.. No.. No.. No.. No.. ',
+    dateOn:'Sun Dec 12 2021',
+    reminder: false,  
+    },
+    {id:'7',
+    title:'Aaaaaaaaaaaa..',
+    details:'No.. No.. No.. No.. No.. No.. ',
+    dateOn:'Tue Dec 21 2021',
     reminder: false,  
     },
     {id:'3',
     title:'hrrhh hrhhh',
     details:'Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls..',
-    dateOn:'5th aug at 4pm',
+    dateOn:'Sun Dec 05 2021',
     reminder: true, 
     },
     {id:'4',
     title:'Don\'t even try, man',
     details:'No.. don\'t.. no need for this c\'mon..No.. don\'t.. no need for this c\'mon..',
-    dateOn:'5th aug at 10pm',
+    dateOn:'Thu Dec 09 2021',
     reminder: false,  
     }
   ])
 
+  const taskDate = date.toDateString();
+
   const addTask = (task) => {
     const id = Math.floor(Math.random()*10000)+1;
     const dateOn = date.toDateString();
+    console.log(dateOn);
     setTasks([...tasks, {id, ...task, dateOn}]) ;
   }
 
@@ -90,13 +111,14 @@ function App() {
                   />
 
                   <MainTasksSection 
-                    setDate={setDate} 
+                    setDate={setDate}
+                    taskDate={taskDate} 
                     date={date} 
                     tasks={tasks} 
                     onDelete={deleteTask} 
                     onToggle={toggleReminder} 
                     onAdd={addTask}
-                    // calendarRange={()=>setCalendarRange(calendarRange)}
+                    tileClass={({ date }) => tasks.map(task => date.toDateString() === task.dateOn ? 'theresTasks' : null)}
                   />
                   
                 </>

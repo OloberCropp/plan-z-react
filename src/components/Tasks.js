@@ -15,9 +15,8 @@ const Tasks = ({tasks, onDelete, onToggle, tasksDay, onAdd}) => {
                   <Linkk linkClass='createTaskBtn' linkTo='/add-task' title='Create new Task' />
 
                   <div className="tasksWrapper">
-                      {tasks.map((task)=>(
-                      <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />
-                      ))}
+                    {tasks.filter(task => task.dateOn === tasksDay).map(task => (
+                    <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} /> ))}
                   </div>
                 </>
               }

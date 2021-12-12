@@ -1,12 +1,14 @@
 // import CalendarDay from "./CalendarDay";
 import Calendar from 'react-calendar';
 
-const CalendarBig = ({ setDate, date, calendarRange }) => {
+const CalendarBig = ({ setDate, date, tileClass }) => {
+    // Calendar.MonthView.Days.TileGroup.Flex.Day
+    console.log(tileClass);
     return (
                 <div className="calendar-table-inner">
 
                     <div className='calendar-container'>
-                        <Calendar onChange={setDate} value={date} selectRange={calendarRange} />
+                        <Calendar onClickDay={setDate} isMultipleSelection={true} showNavigation={false} tileClassName={tileClass} value={date} />
                     </div>
 
                 </div>

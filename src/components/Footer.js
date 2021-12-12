@@ -5,7 +5,7 @@ const Footer = () => {
         <footer>
             <p>Copyright &copy; 2021</p>
             <p>PointInGrave@gmail.com</p>          
-            <Linkk linkTo='/about' text='About' />
+            <Linkk linkTo='/about' title='About' />
         </footer>
     )
 }

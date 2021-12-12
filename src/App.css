@@ -1,9 +1,16 @@
-/* 
-@font-color-bright: '#E4E3FF';
-@font-color-dark: '#4D4A74';
-@bg-gradient-bright: '90deg, #C9C8FF, #FFF0FB';
-@bg-color-dark: '#3D3C5A'; 
-*/
+:root{
+  --font-color-bright: #E4E3FF;
+  --font-color-dark: #4D4A74;
+  --bg-gradient-bright: 90deg, #C9C8FF, #FFF0FB;
+  --bg-color-dark: #3D3C5A; 
+  --font-bright-opacity: rgba(228, 227, 255, 0.5);
+  /* --bg-color-dark-opacity: rgba(28, 20, 51, 0.4);  */
+  --bg-dark-opacity-light: rgba(28, 20, 51, 0.4); 
+  --bg-dark-opacity-normal: rgba(28, 20, 51, 0.6); 
+  --bg-dark-opacity-almax: rgba(28, 20, 51, 0.8); 
+  --bg-day: rgba(21, 13, 45, 0.6);
+  --bg-day-weekend: rgba(63, 8, 8, 0.6);
+}
 
 
 *,
@@ -17,7 +24,7 @@
 a, li{
   text-decoration: none;
   list-style: none;
-  color: inherit;
+  color: var(--font-color-bright, #E4E3FF);
 }
 
 input:focus, textarea:focus, select:focus{
@@ -30,8 +37,8 @@ input:focus, textarea:focus, select:focus{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #3D3C5A;
-  color: #E4E3FF;
+  background: var(--bg-color-dark, #3D3C5A);
+  color: var(--font-color-bright, #E4E3FF);
 }
 
 .container{
@@ -42,18 +49,11 @@ input:focus, textarea:focus, select:focus{
 } 
 
 header{
-  width: 100%;
   position: fixed;
   top: 0px;
-  background: url('./img/navbg.svg') center bottom repeat-x;
-  filter: opacity(.9);
+  width: 100%;
+  background: var(--bg-dark-opacity-almax);
   transition: all .5s ease-in-out .3s;
-  /* background-size: 70%; */
-  /* background: linear-gradient(90deg, #463054, #615FA4); */
-}
-
-.header-stretch{
-  background-size: 100vw 100vh;
 }
 
 nav{
@@ -74,21 +74,40 @@ nav{
   position: relative;
 }
 
-.Link::after{
+.Link::before{
   content: '';
   position: absolute; 
-  height: 2px;
+  height: 1px;
   width:0%;
-  background: #E4E3FF;
-  bottom: -2px;
+  background: var(--font-bright-opacity, rgba(228, 227, 255, 0.6));
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   transition: all ease-in-out .2s;
 }
 
+.Link::after{
+  content: '';
+  position: absolute; 
+  height: 1px;
+  width:0%;
+  background: var(--font-bright-opacity, rgba(228, 227, 255, 0.6));
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all ease-in-out .2s;
+}
+
+.Link:hover::before{
+  content: '';
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .Link:hover::after{
   content: '';
-  width: 100%;
+  width: 80%;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -98,7 +117,7 @@ nav{
   padding: .5rem 1rem;
   width: 8rem;
   border-radius: .3rem;
-  color: #E4E3FF;
+  color: var(--font-color-bright, #E4E3FF);
   cursor: pointer;
 }
 
@@ -111,7 +130,7 @@ nav{
   padding: 6rem 0 4rem;
   /* background: url('./img/bg-light-wavy.svg') left bottom no-repeat;
   background-size: 100% 100%; */
-  background: linear-gradient(90deg, #C9C8FF, #FFF0FB);
+  background: linear-gradient(var(--bg-gradient-bright, #C9C8FF));
   min-height: 100%;
 }
 
@@ -167,7 +186,7 @@ nav{
   background: linear-gradient(90deg, #9493eb, #c169cd);
   width: 100%;
   height: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
   padding: 3rem 0;
 }
 
@@ -178,8 +197,8 @@ nav{
 }
 
 .calendar{
-  max-width: 800px;
-  width: 70%;
+  max-width: 1000px;
+  width: 80%;
   min-width: 500px;
   margin: auto;
   position: relative;
@@ -193,11 +212,11 @@ nav{
   width:100%;
   height:400px;
   border-radius: .7rem;
-  background: rgba(72, 44, 94, 0.25);
+  background: var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
 }
 
 .calendar-header{
-  background: rgba(52, 38, 63, .7);
+  background: var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
   border-radius: .7rem;
   padding: .4rem;
   text-transform: uppercase;
@@ -208,8 +227,8 @@ nav{
 
 .calendar-table-inner{
   padding: .6rem;
-  border-radius: .7rem;
-  background: rgba(77, 74, 116, 0.5);
+  border-radius: .3rem;
+  background: var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
   margin: 1rem 1rem 0 -5vw;
   width: 100%;
   height: fit-content;
@@ -231,32 +250,33 @@ nav{
   height: 100%;
   display: flex;
   flex-direction: row;
-  background:rgba(28, 20, 51, 0.2);
+  background:var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
   border-radius: .3rem;
   justify-content: space-between;
   transition: all .3s ease-in-out;
 }
 .react-calendar__navigation:hover{
   transform: scale(1.05)translateY(-5px);
+  background:var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
 }
 .react-calendar__navigation button{
   width: 4rem;
   border: none;
   padding: .2rem;
-  background:rgba(28, 20, 51, 0);
+  background:var(--bg-dark-opacity-zero, rgba(0, 0, 50, 0));
   border-radius: .3rem;
   color: inherit;
   transition: all .2s ease-in;
 }
 
 .react-calendar__navigation button:hover{
-  background:rgba(28, 20, 51, 0.4);
+  background:var(--bg-dark-opacity-almax, rgba(0, 0, 50, 0.4));
   transform: scale(1.1);
 }
 
 .react-calendar__navigation__label{
   padding: .2rem;
-  background:rgba(45, 1, 176, 0.4);
+  background:var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
   border-radius: .3rem;
   pointer-events: none;
 }
@@ -266,8 +286,8 @@ nav{
 }
 
 .react-calendar__month-view__days{
-  background: rgba(77, 74, 116, 0.5);
-  border-radius: .7rem;
+  background: var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
+  border-radius: .3rem;
   padding: .6rem;
   width: 100%;
   flex-flow: row;
@@ -276,6 +296,46 @@ nav{
 
 .react-calendar__month-view__days:hover{
   transform: scale(1.05)translate(-10px, 10px);
+}
+
+
+.react-calendar__month-view__days__day{
+  background: var(--bg-day, rgba(0, 0, 50, 0.3));
+}
+
+.react-calendar__month-view__days__day--weekend{
+  background: var(--bg-day-weekend, rgba(0, 0, 50, 0.3));
+}
+
+.react-calendar__tile--active::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left:0;
+  top:0;
+  background: rgba(179, 125, 255, 0.5);
+  z-index: -1;
+  transition: all .3s ease-in-out;
+}
+
+.react-calendar__tile--active:hover::before{
+  background: rgba(179, 125, 255, 0.1);
+}
+
+.theresTasks:hover::after{
+  background:rgb(120, 255, 230, 0);
+}
+
+.theresTasks::after{
+  content: '';
+  position: absolute;
+  background:rgb(143, 120, 255);
+  right: 0;
+  top: 0;
+  border-bottom-left-radius: 50%;
+  padding: .5rem;
+  transition: all .1s ease-in-out;
 }
 
 .react-calendar__month-view__days button{
@@ -290,17 +350,21 @@ nav{
   cursor: pointer;
   transform: scale(.96);
   border: none;
-  background-color: rgba(28, 20, 51, 0.4);
-  transition: all .1s ease-in;
+  transition: all .2s ease-in;
 }
 
-.react-calendar__month-view__days button:hover{
-  transform: scale(1.2);
-  background-color: rgba(28, 20, 51, 0.9);
+.react-calendar__month-view__days__day:hover, 
+.react-calendar__month-view__days__day--weekend:hover{
+  transform: scale(1.5);
+  background: none;
+  z-index: 1;
 }
 
-.react-calendar__month-view__days button:active{
+.react-calendar__month-view__days__day:active, 
+.react-calendar__month-view__days__day--weekend:active{
   transform: scale(.9);
+  background: var(--bg-dark-opacity-almax);
+  color: var(--font-color-bright);
 }
 
 /* Main calendar TasksMenu styles*/
@@ -316,7 +380,7 @@ nav{
   margin: 1rem -5vw 0 0;
   padding: .6rem;
   border-radius: .3rem;
-  background:rgba(28, 20, 51, 0.4);
+  background:var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
   overflow: hidden;
   transition: all .4s ease-in-out;
 }
@@ -339,7 +403,7 @@ nav{
   width: 100%;
   padding: .6rem;
   border-radius: .3rem;
-  background:rgba(28, 20, 51, 0.4);
+  background:var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
   position: relative;
   transition: all .2s ease-in-out;
   margin: .3rem 0;
@@ -363,17 +427,18 @@ nav{
   display: block;
   font-size: 1rem;
   font-weight: bolder;
-  border: 1px solid #E4E3FF;
   text-transform: uppercase;
   width: 95%;
-  padding: .8rem;
+  padding: 1.3rem 0 1.3rem 0;
   margin: .4rem 0;
-  background:rgba(28, 20, 51, 0.4);
+  border-radius: .1rem;
+  background: var(--bg-dark-opacity-normal);
   transition: all .2s ease-in;
 }
 
 .createTaskBtn:hover{
-  transform: scale(1.06)translateX(8px);
+  background: var(--bg-dark-opacity-almax);
+  transform: scale(1.05)translateX(10px);
 }
 
 .fa-skull{
@@ -400,7 +465,7 @@ nav{
   width: 100%;
   padding: .6rem;
   border-radius: .3rem;
-  background:rgba(28, 20, 51, 0.4);
+  background:var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
 }
 
 .form-control{
@@ -411,18 +476,27 @@ nav{
 
 .btn-block{
   display: block;
-  background: rgba(19, 0, 38, 0.6);
+  background: var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  padding: 1.2rem 0 1.1rem 0;
   width: 100%;
   margin: 1rem 0;
+  transition: all .2s ease-in;
 }
 
-.form-control input{
+.btn-block:hover{
+  transform: scale(1.1);
+  background: var(--bg-dark-opacity-almax, rgba(0, 0, 50, 0.3));
+}
+
+.form-control input[type=text]{
   border: none;
   width: 100%;
   padding: .6rem;
   border-radius: .3rem;
-  background: rgba(37, 32, 48, 0.5);
-  color: #E4E3FF;
+  background: var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
+  color: var(--font-color-bright, #E4E3FF);
   transition: all .2s ease-in;
 }
 
@@ -430,18 +504,32 @@ nav{
   transform: scale(1.06);
 }
 
-.form-control input:focus{
+.form-control textarea:focus, input:focus{
   transform: scale(1.1);
-  background: rgba(37, 32, 48, 1);
+  background: var(--bg-dark-opacity-almax, rgba(0, 0, 50, 0.5));
 }
 
 .form-checkbox{
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  margin:1rem 0 0 0;
+  width: 60%;
 }
 
 .task-importance{
-  display: flex;
+  width: 1rem;
+  background: var(--bg-dark-opacity-normal)
+}
+
+input[type=checkbox]{
+  transform: scale(2);
+  transition: all .2s ease-in-out;
+}
+
+input[type=checkbox]:hover{
+  transform: scale(3);
 }
 
 .task-title{
@@ -470,8 +558,8 @@ nav{
   width: 100%;
   padding: .6rem;
   border-radius: .3rem;
-  background: rgba(37, 32, 48, 0.5);
-  color: #E4E3FF;
+  background: var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.6));
+  color: var(--font-color-bright, #E4E3FF);
   height: 100%;
   min-height: 5rem;
   max-height: 300px;
@@ -482,7 +570,7 @@ nav{
 .about-screen{
   padding: 6rem 0 4rem 0 ;
   border-radius: .4rem;
-  background: rgba(0, 0, 0, 0.317)  
+  background: var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));  
 }
 
 /* Footer styles */

@@ -2,11 +2,11 @@
 import CalendarBig from "./CalendarBig";
 import Tasks from "./Tasks";
 
-const MainTasksSection = ({setDate, date, tasks, onDelete, onToggle, calendarRange, onAdd}) => {
+const MainTasksSection = ({setDate, date, tasks, onDelete, onToggle, taskDate, onAdd, tileClass}) => {
 
     return (
         <section className='main-section'>
-            <h2 className='main-section-title'>Recently Visited</h2>               
+            <h2 className='main-section-title'>Ready to start you'r day?</h2>               
             <div className="calendar-Tasks-container">
                 <div className="calendar">
 
@@ -18,10 +18,10 @@ const MainTasksSection = ({setDate, date, tasks, onDelete, onToggle, calendarRan
                         <CalendarBig 
                             setDate={setDate} 
                             date={date} 
-                            calendarRange={calendarRange}
+                            tileClass={tileClass}
                         />
                         <Tasks 
-                            tasksDay={date.toDateString()} 
+                            tasksDay={taskDate} 
                             tasks={tasks} 
                             onDelete={onDelete} 
                             onToggle={onToggle} 

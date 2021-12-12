@@ -10,10 +10,10 @@ const Header = ({Checked, onChange}) => {
 
                 <div className="nav-links">
 
-                    <Linkk linkTo='#' text='today' />
-                    <Linkk linkTo='#' text='tools' />
-                    <Linkk linkTo='#' text='files' />
-                    <Linkk linkTo='#' text='my friend'/>
+                    <Linkk linkTo='#' title='today' />
+                    <Linkk linkTo='#' title='tools' />
+                    <Linkk linkTo='#' title='files' />
+                    <Linkk linkTo='#' title='my friend'/>
                     <input type="checkbox" checked={Checked} onChange={onChange} style={{alignSelf:'center', backgroundColor:'red'}} />
                 
                 </div>
