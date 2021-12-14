@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Linkk from './components/Links';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
 import SectionWelcome from './components/SectionWelcome';
 import MainTasksSection from './components/MainTasksSection';
-import Modal from './components/Modal';
+import SignIn from './components/SignIn/index';
+import { AnimatePresence } from 'framer-motion';
 import './App.css'
 
 
@@ -14,7 +14,11 @@ function App() {
   
   const [date, setDate] = useState(new Date());
   const [isExist, setIsExist] = useState(false);
-  const [tasks, setTasks] = useState([])
+  const [tasks, setTasks] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const close = () => setShowModal(false);
+  const open = () => setShowModal(true);
 
   const taskDate = date.toDateString();
 
@@ -25,17 +29,6 @@ function App() {
     }
     getTasks();
   }, [])
-
-//Account immitation on nav_Bar
-  const getStarted = () =>{
-    if(isExist){
-      alert('getStarted() should bring taskalendar')
-    }else{
-      alert('getStarted() should bring sign-in menu');
-      return <Modal  />
-    }
-    console.log(`user exist? ${isExist}`);
-  }
 
   const fetchTasks = async () => {
     const res = await fetch('http://localhost:5000/tasks')
@@ -112,7 +105,7 @@ function App() {
             element={
                 <>
                   <SectionWelcome 
-                    onClick={getStarted} 
+                    onClick={() => (showModal ? close() : open())} 
                   />
 
                   <MainTasksSection 
@@ -124,16 +117,23 @@ function App() {
                     onToggle={toggleReminder} 
                     onAdd={addTask}
                     tileClass={({ date }) => tasks.map(task => date.toDateString() === task.dateOn ? 'theresTasks' : null)}
-                  />
+                    />
                   
                 </>
               }
-            />
+              />
             
             <Route path='/about/*' element={<About />} />
         </Routes>
         <Footer />
       </div>
+      <AnimatePresence
+      initial={false}
+      exitBeforeEnter={true}
+      onExitComplete={() => null}
+      >
+      {showModal && <SignIn handleClose={close} />}
+      </AnimatePresence>
     </Router>
   );
 }

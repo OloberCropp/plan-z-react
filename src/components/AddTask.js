@@ -3,7 +3,7 @@ import Linkk from "./Links";
 
 const AddTask = ({onAdd}) => {
     
-    const [ title, settitle ] = useState('');
+    const [ title, setTitle ] = useState('');
     const [ details, setDetails ] = useState('');
     const [ reminder, setReminder ] = useState(false);
 
@@ -17,7 +17,7 @@ const AddTask = ({onAdd}) => {
 
         onAdd({title, details, reminder});
 
-        settitle('');
+        setTitle('');
         setDetails('');
         setReminder(false);
     }
@@ -42,7 +42,7 @@ const AddTask = ({onAdd}) => {
                 type="text" 
                 placeholder='project meeting' 
                 value={title}
-                onChange={(e)=>settitle(e.target.value)}
+                onChange={(e)=>setTitle(e.target.value)}
                 />
             </div>
             <div className="form-control">

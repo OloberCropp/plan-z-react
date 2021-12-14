@@ -1,0 +1,116 @@
+import Modal from "../Modal/index";
+import { useState } from "react";
+import Button from "../Button";
+
+const SignIn = ({handleClose, signInData}) => {
+
+    const [email, setEmail] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [age, setAge] = useState('');
+    const [password, setPassword] = useState('');
+    const [passCheck, setPassCheck] = useState('');
+    const [privacyP, setPrivacyP] = useState(false);
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        if(email.length < 1 || 
+            firstName.length < 1 || 
+            lastName.length < 1 || 
+            age.length < 1 || 
+            password.length < 8 || 
+            passCheck !== password || 
+            !privacyP){
+            alert('sorry u dumb');
+            console.log(email, firstName, lastName, age, password, passCheck, privacyP );
+            return;
+        }
+
+        const signInData = {email, firstName, lastName, age, password};
+        console.log(signInData);
+        console.log('everything went fine');
+        alert('everything went fine')
+    }
+
+    return (
+        <Modal handleClose={handleClose}>
+            <form className='add-form' onSubmit={onSubmit}>
+                <h2>Create new Account </h2>
+                <div className="form-control">
+                    <label>Email:</label>
+                    <input 
+                    type="email"
+                    value={email} 
+                    placeholder='MikeVasowski@gmail.com'
+                    onChange={(e)=>setEmail(e.target.value)}
+                    />
+                </div>
+                <div className="form-control">
+                    <label>First Name:</label>
+                    <input 
+                    type="text"
+                    value={firstName} 
+                    placeholder='Mike'
+                    onChange={(e)=>setFirstName(e.target.value)}
+                    />
+                </div>
+                <div className="form-control">
+                    <label>Last Name:</label>
+                    <input 
+                    type="text"
+                    value={lastName} 
+                    placeholder='Vasowski'
+                    onChange={(e)=>setLastName(e.target.value)}
+                    />
+                </div>
+                <div className="form-control">
+                    <label>Age:</label>
+                    <input 
+                    type="text"
+                    value={age} 
+                    placeholder='22'
+                    onChange={(e)=>setAge(e.target.value)}
+                    />
+                </div>
+                <div className="form-control">
+                    <label>Create Password:</label>
+                    <input 
+                    type="password"
+                    value={password} 
+                    placeholder='Minimum 8 characters'
+                    onChange={(e)=>setPassword(e.target.value)}
+                    />
+                </div>
+                <div className="form-control">
+                    <label>Confirm your Password:</label>
+                    <input 
+                    type="password"
+                    value={passCheck} 
+                    onChange={(e)=>setPassCheck(e.target.value)}
+                    />
+                </div>
+                <div className="form-control form-checkbox">
+                    <label>
+                        I agree with our
+                        <span 
+                            style={{color: 'blue', 
+                            textDecorationLine:'underline', 
+                            fontStyle:'italic' 
+                        }}>  privacy policy  </span> 
+                        and want to create profile
+                    </label>
+                    <input 
+                    type="checkbox"
+                    value={privacyP} 
+                    onChange={(e)=>setPrivacyP(e.currentTarget.checked)}
+                    />
+                </div>
+                <input className='btn btn-block' type="submit" value='Sign In' />
+                <Button onClick={handleClose} text='later' />
+            </form>
+        </Modal>
+    )
+}
+
+export default SignIn

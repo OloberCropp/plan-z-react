@@ -202,7 +202,7 @@ nav{
   min-width: 500px;
   margin: auto;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .calendar-absolute-bg{
@@ -490,7 +490,11 @@ nav{
   background: var(--bg-dark-opacity-almax, rgba(0, 0, 50, 0.3));
 }
 
-.form-control input[type=text]{
+label{
+  margin-left: .5rem;
+}
+
+.form-control input[type=text], input[type=email], input[type=password]{
   border: none;
   width: 100%;
   padding: .6rem;
@@ -570,33 +574,34 @@ input[type=checkbox]:hover{
 
 /* backdrop */
 .backdrop{
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  background: black;
-  opacity: .8;
+  background: rgba(0, 0, 0, 0.8);
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 3;
 }
 
 .modal{
-  /* width: clamp(50%, 700px, 90%);
-  height: min(50%, 500px); */
-  width: 50%;
-  max-width: 700%;
-  min-width: 50%;
-  min-height: 500px;
-  min-height: 50%;
+  width: clamp(50%, 700px, 90%);
+  height: min(70%, 700px);
 
+  /* background: var(--bg-dark-opacity-light); */
+  background: var(--bg-dark-opacity-light);
+  
+  color: var(--font-color-bright);
+  border-radius: .3rem;
   margin: auto;
   padding: 0 2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  z-index: 4;
 }
 
 /* About screen styles */
