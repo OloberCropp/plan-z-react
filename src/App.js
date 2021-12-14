@@ -1,13 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
-
+import { useState, useEffect } from 'react';
+import Linkk from './components/Links';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import About from './components/About';
 import SectionWelcome from './components/SectionWelcome';
 import MainTasksSection from './components/MainTasksSection';
-
-
+import Modal from './components/Modal';
 import './App.css'
 
 
@@ -15,82 +14,88 @@ function App() {
   
   const [date, setDate] = useState(new Date());
   const [isExist, setIsExist] = useState(false);
+  const [tasks, setTasks] = useState([])
 
-  console.log('rerender has been made');
+  const taskDate = date.toDateString();
 
+  useEffect(() => {
+    const getTasks = async () =>{ 
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    }
+    getTasks();
+  }, [])
+
+//Account immitation on nav_Bar
   const getStarted = () =>{
     if(isExist){
       alert('getStarted() should bring taskalendar')
     }else{
       alert('getStarted() should bring sign-in menu');
+      return <Modal  />
     }
     console.log(`user exist? ${isExist}`);
   }
 
-  const [tasks, setTasks] = useState([
-    {id:'1',
-    title:'4th aug at 11am',
-    details:'Shut the fuck up aaaaaam Shut the fuck up Shut the fuck up Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up',
-    dateOn:'Sun Dec 05 2021',
-    reminder: false,  
-    },
-    {id:'2',
-    title:'Just go away pls..',
-    details:'No.. don\'t.. no need for this c\'mon..',
-    dateOn:'Sun Dec 12 2021',
-    reminder: false,  
-    },
-    {id:'5',
-    title:'Just go away pls..',
-    details:'No.. don\'t.. no need for this c\'mon..',
-    dateOn:'Sun Dec 12 2021',
-    reminder: false,  
-    },
-    {id:'6',
-    title:'Aaaaaaaaaaaa..',
-    details:'No.. No.. No.. No.. No.. No.. ',
-    dateOn:'Sun Dec 12 2021',
-    reminder: false,  
-    },
-    {id:'7',
-    title:'Aaaaaaaaaaaa..',
-    details:'No.. No.. No.. No.. No.. No.. ',
-    dateOn:'Tue Dec 21 2021',
-    reminder: false,  
-    },
-    {id:'3',
-    title:'hrrhh hrhhh',
-    details:'Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls..',
-    dateOn:'Sun Dec 05 2021',
-    reminder: true, 
-    },
-    {id:'4',
-    title:'Don\'t even try, man',
-    details:'No.. don\'t.. no need for this c\'mon..No.. don\'t.. no need for this c\'mon..',
-    dateOn:'Thu Dec 09 2021',
-    reminder: false,  
-    }
-  ])
+  const fetchTasks = async () => {
+    const res = await fetch('http://localhost:5000/tasks')
+    const data = await res.json();
 
-  const taskDate = date.toDateString();
+    return data;
+  }
+  
+  const fetchTask = async (id) => {
+    const res = await fetch('http://localhost:5000/tasks/'+id);
+    const data = await res.json();
 
-  const addTask = (task) => {
-    const id = Math.floor(Math.random()*10000)+1;
-    const dateOn = date.toDateString();
-    console.log(dateOn);
-    setTasks([...tasks, {id, ...task, dateOn}]) ;
+    return data;
   }
 
-  const deleteTask = (id) => {
-    setTasks(
-      tasks.filter(task => task.id !== id)
-    )
+  const addTask = async (task) => {
+
+    // const dateOn = date.toDateString();
+    const dateOn = taskDate;
+    task = {...task, dateOn};
+
+    const res = await fetch('http://localhost:5000/tasks',
+    {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      }, 
+      body: JSON.stringify(task)
+    });
+
+    const data = await res.json();
+
+    setTasks([...tasks, data]);
   }
 
-  const toggleReminder = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? {...task, reminder: !task.reminder} : task
+  const deleteTask = async (id) => {
+    fetch('http://localhost:5000/tasks/'+id,
+    { method: 'DELETE' })
+
+    setTasks(tasks.filter(task => task.id !== id))
+  }
+
+  const toggleReminder = async (id) => {
+    const taskToToggle = await fetchTask(id);
+    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder};
+
+    const res = await fetch('http://localhost:5000/tasks/'+id,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-type': 'application/json'
+      }, 
+      body: JSON.stringify(updTask)
+      })
+
+      const data = await res.json()
+
+      setTasks(
+        tasks.map((task) =>
+        task.id === id ? { ...task, reminder: data.reminder } : task
       )
     )
   }

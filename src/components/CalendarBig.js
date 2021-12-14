@@ -3,7 +3,6 @@ import Calendar from 'react-calendar';
 
 const CalendarBig = ({ setDate, date, tileClass }) => {
     // Calendar.MonthView.Days.TileGroup.Flex.Day
-    console.log(tileClass);
     return (
                 <div className="calendar-table-inner">
 

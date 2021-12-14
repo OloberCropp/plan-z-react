@@ -539,12 +539,14 @@ input[type=checkbox]:hover{
 .show-task-title{
   font-size: 1.2rem;
   font-weight: normal;
+  word-wrap: break-word;
   margin-bottom: 1rem;
   line-height: 1.4rem;
   width:80%;
 }
 
 .show-task-details{
+  word-wrap: break-word;
   font-size: .9rem;
   font-weight: normal;
   width: 80%;
@@ -564,6 +566,37 @@ input[type=checkbox]:hover{
   min-height: 5rem;
   max-height: 300px;
   transition: all .2s ease-in;
+}
+
+/* backdrop */
+.backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: black;
+  opacity: .8;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal{
+  /* width: clamp(50%, 700px, 90%);
+  height: min(50%, 500px); */
+  width: 50%;
+  max-width: 700%;
+  min-width: 50%;
+  min-height: 500px;
+  min-height: 50%;
+
+  margin: auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* About screen styles */
