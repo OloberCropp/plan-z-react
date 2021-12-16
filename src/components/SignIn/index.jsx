@@ -11,6 +11,7 @@ const SignIn = ({handleClose, signInData}) => {
     const [password, setPassword] = useState('');
     const [passCheck, setPassCheck] = useState('');
     const [privacyP, setPrivacyP] = useState(false);
+    const [showNotValid, setShowNotValid] = useState(true)
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -22,22 +23,21 @@ const SignIn = ({handleClose, signInData}) => {
             password.length < 8 || 
             passCheck !== password || 
             !privacyP){
-            alert('sorry u dumb');
+                setShowNotValid(false);
             console.log(email, firstName, lastName, age, password, passCheck, privacyP );
-            return;
+            return
         }
-
-        const signInData = {email, firstName, lastName, age, password};
-        console.log(signInData);
+        
+        signInData({email, firstName, lastName, age, password});
         console.log('everything went fine');
         alert('everything went fine')
     }
 
     return (
-        <Modal handleClose={handleClose}>
+        <Modal handleClose={handleClose} >
             <form className='add-form' onSubmit={onSubmit}>
                 <h2>Create new Account </h2>
-                <div className="form-control">
+                <div className="form-control sign-log-form">
                     <label>Email:</label>
                     <input 
                     type="email"
@@ -46,7 +46,7 @@ const SignIn = ({handleClose, signInData}) => {
                     onChange={(e)=>setEmail(e.target.value)}
                     />
                 </div>
-                <div className="form-control">
+                <div className="form-control sign-log-form">
                     <label>First Name:</label>
                     <input 
                     type="text"
@@ -55,7 +55,7 @@ const SignIn = ({handleClose, signInData}) => {
                     onChange={(e)=>setFirstName(e.target.value)}
                     />
                 </div>
-                <div className="form-control">
+                <div className="form-control sign-log-form">
                     <label>Last Name:</label>
                     <input 
                     type="text"
@@ -64,7 +64,7 @@ const SignIn = ({handleClose, signInData}) => {
                     onChange={(e)=>setLastName(e.target.value)}
                     />
                 </div>
-                <div className="form-control">
+                <div className="form-control sign-log-form">
                     <label>Age:</label>
                     <input 
                     type="text"
@@ -73,7 +73,7 @@ const SignIn = ({handleClose, signInData}) => {
                     onChange={(e)=>setAge(e.target.value)}
                     />
                 </div>
-                <div className="form-control">
+                <div className="form-control sign-log-form">
                     <label>Create Password:</label>
                     <input 
                     type="password"
@@ -82,7 +82,7 @@ const SignIn = ({handleClose, signInData}) => {
                     onChange={(e)=>setPassword(e.target.value)}
                     />
                 </div>
-                <div className="form-control">
+                <div className="form-control sign-log-form">
                     <label>Confirm your Password:</label>
                     <input 
                     type="password"
@@ -106,8 +106,16 @@ const SignIn = ({handleClose, signInData}) => {
                     onChange={(e)=>setPrivacyP(e.currentTarget.checked)}
                     />
                 </div>
+                <h3 
+                hidden={showNotValid} 
+                style={{color:'red', 
+                fontWeight:'lighter',
+                fontSize:'1rem'
+                }}
+                >
+                    Sorry, seems something isn't correct, check your info and try again</h3>
                 <input className='btn btn-block' type="submit" value='Sign In' />
-                <Button onClick={handleClose} text='later' />
+                <Button btnClass='sign-log-btn' onClick={handleClose} text='later' />
             </form>
         </Modal>
     )

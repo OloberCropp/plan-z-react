@@ -465,13 +465,27 @@ nav{
   width: 100%;
   padding: .6rem;
   border-radius: .3rem;
-  background:var(--bg-dark-opacity-light, rgba(0, 0, 50, 0.3));
+  background:var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
 }
+
 
 .form-control{
   display: flex;
   flex-direction: column;
   text-align: left;
+}
+
+.sign-log-btn{
+  background: none;
+  align-self: center;
+  border-radius: .5rem .5rem 0 0  ;
+  border: 1px solid rgba(245, 245, 245, 0.3);
+  border-bottom: none;
+  transition: transform .2s ease-in-out;
+}
+
+.sign-log-btn:hover{
+  transform: scale(1.1);
 }
 
 .btn-block{
@@ -499,18 +513,26 @@ label{
   width: 100%;
   padding: .6rem;
   border-radius: .3rem;
-  background: var(--bg-dark-opacity-normal, rgba(0, 0, 50, 0.3));
+  background: var(--bg-dark-opacity-almax, rgba(0, 0, 50, 0.5));
   color: var(--font-color-bright, #E4E3FF);
-  transition: all .2s ease-in;
+  transition: all .1s ease-in;
+}
+
+.sign-log-form input::placeholder{
+  color: var(--bg-dark-opacity-normal);
+}
+
+.sign-log-form 
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=date]{
+  color: var(--font-color-dark);
+  background: var(--font-bright-opacity);
 }
 
 .form-control input:hover, textarea:hover{
-  transform: scale(1.06);
-}
-
-.form-control textarea:focus, input:focus{
-  transform: scale(1.1);
-  background: var(--bg-dark-opacity-almax, rgba(0, 0, 50, 0.5));
+  transform: scale(.99, 1.1);
 }
 
 .form-checkbox{
@@ -572,12 +594,11 @@ input[type=checkbox]:hover{
   transition: all .2s ease-in;
 }
 
-/* backdrop */
 .backdrop{
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.6);
   width: 100%;
   height: 100%;
   display: flex;
@@ -591,7 +612,7 @@ input[type=checkbox]:hover{
   height: min(70%, 700px);
 
   /* background: var(--bg-dark-opacity-light); */
-  background: var(--bg-dark-opacity-light);
+  background: var(--bg-dark-opacity-normal);
   
   color: var(--font-color-bright);
   border-radius: .3rem;

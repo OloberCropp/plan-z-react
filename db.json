@@ -1,172 +1,46 @@
 {
-  "tasks": [
+  "users": [
     {
-      "id": 1,
-      "title": "4th aug at 11am",
-      "details": "Shut the fuck up aaaaaam Shut the fuck up Shut the fuck up Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up",
-      "dateOn": "Sun Dec 05 2021",
-      "reminder": false
+      "email": "olivercropp1966@gmail.com",
+      "firstName": "oliver",
+      "lastName": "cropp",
+      "age": "55",
+      "password": "23419821",
+      "tasks": [
+        {
+          "title": "4th aug at 11am",
+          "details": "Shut the fuck up aaaaaam Shut the fuck up Shut the fuck up Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up",
+          "dateOn": "Sun Dec 05 2021",
+          "reminder": false,
+          "id": 1
+        }
+      ],
+      "id": 1
     },
     {
-      "id": 2,
-      "title": "Just go away pls..",
-      "details": "No.. don't.. no need for this, c'mon..",
-      "dateOn": "Sun Dec 12 2021",
-      "reminder": false
+      "email": "olivercropp1966@gmail.com",
+      "firstName": "oliver",
+      "lastName": "cropp",
+      "age": "55",
+      "password": "23419821",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "4th aug at 11am",
+          "details": "Shut the fuck up aaaaaam ",
+          "dateOn": "Sun Dec 05 2021",
+          "reminder": false
+        }
+      ],
+      "id": 2
     },
     {
-      "id": 5,
-      "title": "Just go away pls..",
-      "details": "No.. don't.. no need for this c'mon..",
-      "dateOn": "Sun Dec 12 2021",
-      "reminder": false
-    },
-    {
-      "id": 6,
-      "title": "Aaaaaaaaaaaa..",
-      "details": "No.. No.. No.. No.. No.. No.. ",
-      "dateOn": "Sun Dec 12 2021",
-      "reminder": false
-    },
-    {
-      "id": 7,
-      "title": "Aaaaaaaaaaaa..",
-      "details": "No.. No.. No.. No.. No.. No.. ",
-      "dateOn": "Tue Dec 21 2021",
-      "reminder": false
-    },
-    {
-      "id": 3,
-      "title": "hrrhh hrhhh",
-      "details": "Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls, Just go away pls..",
-      "dateOn": "Sun Dec 05 2021",
-      "reminder": true
-    },
-    {
-      "id": 4,
-      "title": "Don't even try, man",
-      "details": "No.. don't.. no need for this c'mon..No.. don't.. no need for this c'mon..",
-      "dateOn": "Thu Dec 09 2021",
-      "reminder": false
-    },
-    {
-      "title": "gdafgads",
-      "details": "gasdgads",
-      "reminder": false,
-      "dateOn": "Mon Dec 13 2021",
-      "id": 8
-    },
-    {
-      "title": "gsadgsdag",
-      "details": "gsdagasd",
-      "reminder": false,
-      "dateOn": "Sun Dec 19 2021",
-      "id": 9
-    },
-    {
-      "title": "g;jfhk'sdalkng",
-      "details": "galdskg'lkasdg",
-      "reminder": true,
-      "dateOn": "Fri Dec 17 2021",
-      "id": 10
-    },
-    {
-      "title": "l;kds'lgkj'kdsga",
-      "details": "asd;jghlsakdg",
-      "reminder": true,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 12
-    },
-    {
-      "title": "asgdasdg",
-      "details": "gsadgkohd'flklkfl;kgsadgkohd'flklkfl;k gsadgkohd'flklkfl;kgsadgkohd'flklkfl;kgsadgkohd'flklkfl;k gsadgkohd'flklkfl;k gsadgkohd'flklkfl;k gsadgkohd'flklkfl;k gsadgkohd'flklkfl;k gsadgkohd'flklkfl;k gsadgkohd'flklkfl;k gsadgk ohd'flkl kfl;k",
-      "reminder": true,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 13
-    },
-    {
-      "title": "gsdgas",
-      "details": "dsggasg",
-      "reminder": true,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 14
-    },
-    {
-      "title": "sagddgasdg",
-      "details": "gasdg",
-      "reminder": true,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 15
-    },
-    {
-      "title": "agsdg",
-      "details": "gasdg",
-      "reminder": false,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 16
-    },
-    {
-      "title": "asdgasdg",
-      "details": "sadgga",
-      "reminder": false,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 17
-    },
-    {
-      "title": "gdsgasdgsdagsdgdsgasfdskjfnkdsj;kjfkajdskfjhalsdjkfhlaksjdhfkjashlfkjalsdkfjhalskdjfhlakjsdhflkjasdlkfjhkasd",
-      "details": "fdsfasdf",
-      "reminder": false,
-      "dateOn": "Fri Dec 24 2021",
-      "id": 18
-    },
-    {
-      "title": "fdsagfsdag",
-      "details": "gasdgasdgasdg",
-      "reminder": false,
-      "dateOn": "Sat Dec 18 2021",
-      "id": 19
-    },
-    {
-      "title": "fdsaf",
-      "details": "dgsa",
-      "reminder": false,
-      "dateOn": "Sun Dec 19 2021",
-      "id": 20
-    },
-    {
-      "title": "hreh",
-      "details": "rhewh",
-      "reminder": false,
-      "dateOn": "Tue Dec 21 2021",
-      "id": 22
-    },
-    {
-      "title": "gadsgads",
-      "details": "gasdgsad",
-      "reminder": false,
-      "dateOn": "Sat Dec 25 2021",
-      "id": 23
-    },
-    {
-      "title": "gdsagsadg",
-      "details": "gasdgdsagds",
-      "reminder": true,
-      "dateOn": "Tue Dec 14 2021",
-      "id": 24
-    },
-    {
-      "title": "gsdfh",
-      "details": "fhds",
-      "reminder": false,
-      "dateOn": "Thu Dec 23 2021",
-      "id": 25
-    },
-    {
-      "title": "LJKFLkdj",
-      "details": "Retdg\n",
-      "reminder": false,
-      "dateOn": "Tue Dec 14 2021",
-      "id": 26
+      "email": "lknl@gmail.com",
+      "firstName": "lkn;",
+      "lastName": "lkn;n",
+      "age": "lknln",
+      "password": "11111111",
+      "id": 3
     }
   ]
 }

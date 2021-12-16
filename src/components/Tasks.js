@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 const Tasks = ({tasks, onDelete, onToggle, tasksDay, onAdd}) => {
 
   const showTasks = () => {
-    const TasksOnDate = tasks.filter(task => task.dateOn === tasksDay);
+    const TasksOnDate = tasks.length > 0 ? tasks.filter(task => task.dateOn === tasksDay) : [];
     if(TasksOnDate.length > 0){
       return TasksOnDate.map(task => <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />)
     }else{
