@@ -2,7 +2,7 @@ import Modal from "../Modal/index";
 import { useState } from "react";
 import Button from "../Button";
 
-const SignIn = ({handleClose, signInData}) => {
+const SignUp = ({handleClose, SignUpData}) => {
 
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -12,6 +12,7 @@ const SignIn = ({handleClose, signInData}) => {
     const [passCheck, setPassCheck] = useState('');
     const [privacyP, setPrivacyP] = useState(false);
     const [showNotValid, setShowNotValid] = useState(true)
+    const tasks = []
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -28,7 +29,7 @@ const SignIn = ({handleClose, signInData}) => {
             return
         }
         
-        signInData({email, firstName, lastName, age, password});
+        SignUpData({email, firstName, lastName, age, password, tasks});
         console.log('everything went fine');
         alert('everything went fine')
     }
@@ -121,4 +122,4 @@ const SignIn = ({handleClose, signInData}) => {
     )
 }
 
-export default SignIn
+export default SignUp

@@ -13,34 +13,51 @@
           "dateOn": "Sun Dec 05 2021",
           "reminder": false,
           "id": 1
+        },
+        {
+          "title": "tasks two",
+          "details": "Shut th Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up",
+          "dateOn": "Tue Dec 07 2021",
+          "reminder": false,
+          "id": 2
+        },
+        {
+          "title": "gasdgasd",
+          "details": "gasdg",
+          "reminder": true,
+          "dateOn": "Fri Dec 17 2021",
+          "id": 3
+        },
+        {
+          "title": "ndfndafbhad",
+          "details": "asdfgsdgas",
+          "reminder": true,
+          "dateOn": "Sun Dec 19 2021",
+          "id": 49815
+        },
+        {
+          "title": "gsdagsadg",
+          "details": "gasdgasd",
+          "reminder": false,
+          "dateOn": "Tue Dec 21 2021",
+          "id": 77943
+        },
+        {
+          "title": "gdasgsdga",
+          "details": "gasdgsadg",
+          "reminder": false,
+          "dateOn": "Sat Dec 18 2021",
+          "id": 64516
         }
       ],
       "id": 1
     },
     {
-      "email": "olivercropp1966@gmail.com",
-      "firstName": "oliver",
-      "lastName": "cropp",
-      "age": "55",
-      "password": "23419821",
+      "status": "notSignIn",
       "tasks": [
-        {
-          "id": 1,
-          "title": "4th aug at 11am",
-          "details": "Shut the fuck up aaaaaam ",
-          "dateOn": "Sun Dec 05 2021",
-          "reminder": false
-        }
+        "Cant add tasks without SignIn"
       ],
-      "id": 2
-    },
-    {
-      "email": "lknl@gmail.com",
-      "firstName": "lkn;",
-      "lastName": "lkn;n",
-      "age": "lknln",
-      "password": "11111111",
-      "id": 3
+      "id": 0
     }
   ]
 }
