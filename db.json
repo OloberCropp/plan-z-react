@@ -8,13 +8,6 @@
       "password": "23419821",
       "tasks": [
         {
-          "title": "4th aug at 11am",
-          "details": "Shut the fuck up aaaaaam Shut the fuck up Shut the fuck up Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up",
-          "dateOn": "Sun Dec 05 2021",
-          "reminder": false,
-          "id": 1
-        },
-        {
           "title": "tasks two",
           "details": "Shut th Shut the fuck aaammm up Shut the fuck up Shut the fuck up Shut the fuck up",
           "dateOn": "Tue Dec 07 2021",
@@ -48,6 +41,69 @@
           "reminder": false,
           "dateOn": "Sat Dec 18 2021",
           "id": 64516
+        },
+        {
+          "title": "ohg;alskgdlsadkg;lkasdg",
+          "details": "gasdgsadgdsagasdgsa",
+          "reminder": true,
+          "dateOn": "Sun Dec 19 2021",
+          "id": 51922
+        },
+        {
+          "title": "kjb:KJBLHV:KB",
+          "details": "adslgkndlsgagd",
+          "reminder": false,
+          "dateOn": "Sun Dec 19 2021",
+          "id": 32943
+        },
+        {
+          "title": "gadsgadsgas",
+          "details": "agdsgasg",
+          "reminder": false,
+          "dateOn": "Sun Dec 19 2021",
+          "id": 1745
+        },
+        {
+          "title": "gdsgasdg",
+          "details": "gasdgasdg",
+          "reminder": false,
+          "dateOn": "Mon Dec 20 2021",
+          "id": 52784
+        },
+        {
+          "title": "hgsfhf",
+          "details": "fdhsfdhj",
+          "reminder": true,
+          "dateOn": "Wed Dec 22 2021",
+          "id": 31139
+        },
+        {
+          "title": "hfdhsdf",
+          "details": "hdsfhsdf",
+          "reminder": true,
+          "dateOn": "Sun Dec 19 2021",
+          "id": 50240
+        },
+        {
+          "title": "lnglkasg",
+          "details": "dsagdgasdg",
+          "reminder": true,
+          "dateOn": "Fri Dec 24 2021",
+          "id": 27027
+        },
+        {
+          "title": ",mbnldzsggsad",
+          "details": "ggsdgasdgsadg",
+          "reminder": true,
+          "dateOn": "Thu Dec 30 2021",
+          "id": 31629
+        },
+        {
+          "title": "Create and connect new compoonents for the file system",
+          "details": "Today i need to do at least basic visuals for every main component, such as: \n1.Avatar on the nav with own animated nav with links:\n *Profile(Profile settings, user Rank, tasks complition rate, Privacy settings)\n *Settings(on/off on some features like: \"Rate your day\", Wigets, . . .)\n *SignOut\n2.My Directories (Implement basic cards design)\n3.Contacts (find user, list of contacts, simple chat)\n4.Share plans&resouses fith friends.\n",
+          "reminder": true,
+          "dateOn": "Thu Dec 23 2021",
+          "id": 97004
         }
       ],
       "id": 1
@@ -58,6 +114,33 @@
         "Cant add tasks without SignIn"
       ],
       "id": 0
+    },
+    {
+      "email": "pointingrave@gmail.com",
+      "firstName": "Олег",
+      "lastName": "Леоненко",
+      "age": "22",
+      "password": "11111111",
+      "tasks": [],
+      "id": 2
+    },
+    {
+      "email": "pointingrave@gmail.com",
+      "firstName": "hsdfhsdfsh",
+      "lastName": "dfshdsfhsdf",
+      "age": "fdshdfshsfdh",
+      "password": "11111111",
+      "tasks": [],
+      "id": 3
+    },
+    {
+      "email": "pointingrave@gmail.com",
+      "firstName": "hsdfhsdfsh",
+      "lastName": "dfshdsfhsdf",
+      "age": "fdshdfshsfdh",
+      "password": "11111111",
+      "tasks": [],
+      "id": 4
     }
   ]
 }

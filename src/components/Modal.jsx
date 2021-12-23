@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Backdrop from "../Backdrop";
+import Backdrop from "./Backdrop.jsx";
 
 const Modal = ({ children, handleClose}) => {
 
@@ -12,30 +12,20 @@ const Modal = ({ children, handleClose}) => {
             y: '0',
             opacity: '1',
             transition: {
-                duration: 2,
+                duration: 0.1,
                 type: 'spring',
                 damping: 25,
                 stiffness: 500,
             }
         },
         exit: {
-            y:'100vh',
-            transition: {
-                duration: 0.1,
-                type: 'spring',
-                damping: 25,
-                stiffness: 500,
-            }
-            // opacity: '0'
+            y:'-100vh'
         }
     }
 
 
   const closeOnDrag = (event, info) => {
     console.log(info)
-    // if (info.velocity.x > 0) {
-    //   handleClose();
-    // }
     if (info.offset.x > 100 || info.offset.x < -100) {
       handleClose();
     }

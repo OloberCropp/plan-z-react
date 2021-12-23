@@ -2,11 +2,18 @@
 import CalendarBig from "./CalendarBig";
 import Tasks from "./Tasks";
 
-const MainTasksSection = ({setDate, date, tasks, onDelete, onToggle, taskDate, onAdd, tileClass}) => {
+const MainTasksSection = ({account, setDate, date, tasks, onDelete, onToggle, taskDate, onAdd, tileClass}) => {
+    
+    const getDayTime = () => {
+        const time = new Date().getHours();
+        const dayTime = time < 6 ? 'Night' : time < 12 ? 'Morning': time < 18 ? 'Day' : time < 24 ? 'Evening' : '';
+        return dayTime;
+    }
 
     return (
         <section className='main-section'>
-            <h2 className='main-section-title'>Ready to start you'r day?</h2>               
+            <h2 className='main-section-title'>Good {getDayTime()}, {account.firstName} {account.lastName}!</h2>  
+
             <div className="calendar-Tasks-container">
                 <div className="calendar">
 

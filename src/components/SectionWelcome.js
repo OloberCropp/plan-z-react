@@ -25,11 +25,7 @@ const SectionWelcome = ({onClick}) => {
                             <span style={{color:'#B157A8'}}> for free!!</span>
                         </h3>
 
-                        <Button 
-                            btnClass='welcome-btn' 
-                            text='get started'
-                            onClick={onClick} 
-                        />
+                        <Button btnClass='welcome-btn' text='get started' onClick={onClick} />
 
                     </div>
                     

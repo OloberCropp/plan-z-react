@@ -1,6 +1,6 @@
-import Modal from "../Modal/index";
+import Modal from "./Modal.jsx";
 import { useState } from "react";
-import Button from "../Button";
+import Button from "./Button";
 
 const SignUp = ({handleClose, SignUpData}) => {
 

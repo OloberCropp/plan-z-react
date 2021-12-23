@@ -1,9 +1,8 @@
 import Task from './Task';
 import Linkk from './Links';
-import AddTask from './AddTask';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Outlet} from 'react-router-dom';
 
-const Tasks = ({tasks, onDelete, onToggle, tasksDay, onAdd}) => {
+const Tasks = ({ tasks, onDelete, onToggle, tasksDay }) => {
 
   const showTasks = () => {
     const TasksOnDate = tasks.length > 0 ? tasks.filter(task => task.dateOn === tasksDay) : [];
@@ -15,22 +14,17 @@ const Tasks = ({tasks, onDelete, onToggle, tasksDay, onAdd}) => {
   }
     return (
         <div className='tasks container'>
-            <h3>Tasks for: {tasksDay}</h3>
+          <h3>Tasks for: {tasksDay}</h3>
           <Routes>
-            <Route 
-              path='/'
-              element={
+            <Route path='/' element={
                 <>
-                  <Linkk linkClass='createTaskBtn' linkTo='/add-task' title='Create new Task' />
-
-                  <div className="tasksWrapper">
-                    {showTasks()}
-                  </div>
+                  <Linkk linkClass='createTaskBtn' linkTo='addtask' title='Create new Task' />
+                  <div className="tasksWrapper">{showTasks()}</div>
                 </>
               }
             />
-            <Route path='/add-task' element={<AddTask onAdd={onAdd} />} />
           </Routes>
+          <Outlet />
         </div>
     )
 }
