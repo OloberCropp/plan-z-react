@@ -3,14 +3,12 @@ import Backdrop from "./Backdrop.jsx";
 
 const Modal = ({ children, handleClose}) => {
 
-    const dropIn = {
+    const dropNav = {
         hidden: {
-            y:'-100vh',
-            opacity: '0'
+            y:'-100vh'
         },
         visible: {
             y: '0',
-            opacity: '1',
             transition: {
                 duration: 0.1,
                 type: 'spring',
@@ -19,7 +17,7 @@ const Modal = ({ children, handleClose}) => {
             }
         },
         exit: {
-            y:'-100vh'
+            y:'100vh'
         }
     }
 
@@ -36,7 +34,7 @@ const Modal = ({ children, handleClose}) => {
             <motion.div
             onClick={(e)=>e.stopPropagation()}
             className='modal'
-            variants={dropIn}
+            variants={dropNav}
             initial='hidden'
             animate='visible'
             exit='exit'

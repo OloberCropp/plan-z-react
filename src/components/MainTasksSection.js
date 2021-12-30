@@ -12,7 +12,7 @@ const MainTasksSection = ({account, setDate, date, tasks, onDelete, onToggle, ta
 
     return (
         <section className='main-section'>
-            <h2 className='main-section-title'>Good {getDayTime()}, {account.firstName} {account.lastName}!</h2>  
+            <h2 className='main-section-title'>Good {getDayTime()}, <span style={{whiteSpace:'nowrap', textTransform:'capitalize'}} >{account.firstName} {account.lastName}!</span></h2>  
 
             <div className="calendar-Tasks-container">
                 <div className="calendar">

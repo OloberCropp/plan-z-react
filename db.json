@@ -5,7 +5,11 @@
       "firstName": "oliver",
       "lastName": "cropp",
       "age": "55",
-      "password": "23419821",
+      "password": "11111111",
+      "contactsID": [
+        2,
+        3
+      ],
       "tasks": [
         {
           "title": "tasks two",
@@ -85,25 +89,39 @@
           "id": 50240
         },
         {
-          "title": "lnglkasg",
-          "details": "dsagdgasdg",
-          "reminder": true,
-          "dateOn": "Fri Dec 24 2021",
-          "id": 27027
-        },
-        {
-          "title": ",mbnldzsggsad",
-          "details": "ggsdgasdgsadg",
-          "reminder": true,
-          "dateOn": "Thu Dec 30 2021",
-          "id": 31629
-        },
-        {
           "title": "Create and connect new compoonents for the file system",
           "details": "Today i need to do at least basic visuals for every main component, such as: \n1.Avatar on the nav with own animated nav with links:\n *Profile(Profile settings, user Rank, tasks complition rate, Privacy settings)\n *Settings(on/off on some features like: \"Rate your day\", Wigets, . . .)\n *SignOut\n2.My Directories (Implement basic cards design)\n3.Contacts (find user, list of contacts, simple chat)\n4.Share plans&resouses fith friends.\n",
-          "reminder": true,
+          "reminder": false,
           "dateOn": "Thu Dec 23 2021",
           "id": 97004
+        },
+        {
+          "title": "Make Profile Section",
+          "details": "Make a simple markup and logic for profile section ",
+          "reminder": true,
+          "dateOn": "Fri Dec 24 2021",
+          "id": 4606
+        },
+        {
+          "title": "make a chat section",
+          "details": "",
+          "reminder": false,
+          "dateOn": "Mon Dec 27 2021",
+          "id": 19616
+        },
+        {
+          "title": "Finish Chat Section",
+          "details": "And Start implementing file reading",
+          "reminder": true,
+          "dateOn": "Tue Dec 28 2021",
+          "id": 82008
+        },
+        {
+          "title": "Implement LogIn menu and suppoort of multiple accounts",
+          "details": "Reorganize corrent crap with accounts and make it all working from different accounts [get rid of absolute Log In/Out button",
+          "reminder": false,
+          "dateOn": "Thu Dec 30 2021",
+          "id": 46402
         }
       ],
       "id": 1
@@ -116,31 +134,111 @@
       "id": 0
     },
     {
-      "email": "pointingrave@gmail.com",
-      "firstName": "Олег",
-      "lastName": "Леоненко",
-      "age": "22",
+      "email": "MikeVazowski@gmail.com",
+      "firstName": "Mike",
+      "lastName": "Vazowski",
+      "avatar": "https://www.seekpng.com/png/detail/67-674595_mike-from-monsters-inc-mike-wazowski.png",
+      "age": "25",
       "password": "11111111",
       "tasks": [],
       "id": 2
     },
     {
-      "email": "pointingrave@gmail.com",
-      "firstName": "hsdfhsdfsh",
-      "lastName": "dfshdsfhsdf",
-      "age": "fdshdfshsfdh",
+      "email": "JamesSullivan@gmail.com",
+      "firstName": "James",
+      "lastName": "Sullivan",
+      "avatar": "https://i.pinimg.com/originals/c5/4c/b0/c54cb01760765d678606ab2a10e47ea1.jpg",
+      "age": "25",
       "password": "11111111",
       "tasks": [],
       "id": 3
+    }
+  ],
+  "chats": [
+    {
+      "messages": [
+        {
+          "messageText": "Hello mate, so long haven't seen you. I've been busy for a half year working on you big project, aren't ya?",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:34:56"
+          ],
+          "sentBy": 1,
+          "id": 7650
+        },
+        {
+          "messageText": "How it is going? Already heard a great reviews about your stuff",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:36:51"
+          ],
+          "sentBy": 1,
+          "id": 6059
+        },
+        {
+          "messageText": "Heyo! Yeah kinda been forced to dissapear from all media while developing a working product so need some time to get back in it",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:41:43"
+          ],
+          "sentBy": 2,
+          "id": 5784
+        },
+        {
+          "messageText": "It'is pretty successfull, people love it. Seems like i'm finally found my road.",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:50:01"
+          ],
+          "sentBy": 2,
+          "id": 3731
+        },
+        {
+          "messageText": "How r you doing?",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:50:05"
+          ],
+          "sentBy": 2,
+          "id": 8523
+        },
+        {
+          "messageText": "Cool!",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:50:33"
+          ],
+          "sentBy": 1,
+          "id": 9107
+        },
+        {
+          "messageText": "I'm doing great too",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:51:32"
+          ],
+          "sentBy": 1,
+          "id": 6124
+        },
+        {
+          "messageText": "Wanna hang out sometime on weekends? ",
+          "onDateTime": [
+            "29/12/2021",
+            " 17:53:03"
+          ],
+          "sentBy": 1,
+          "id": 8738
+        }
+      ],
+      "membersID": [
+        1,
+        2
+      ],
+      "id": 1
     },
     {
-      "email": "pointingrave@gmail.com",
-      "firstName": "hsdfhsdfsh",
-      "lastName": "dfshdsfhsdf",
-      "age": "fdshdfshsfdh",
-      "password": "11111111",
-      "tasks": [],
-      "id": 4
+      "messages": [],
+      "id": 2
     }
   ]
 }

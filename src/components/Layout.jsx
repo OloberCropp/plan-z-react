@@ -2,10 +2,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 import { Outlet } from "react-router";
 
-const Layout = ({onChange, onCheck}) => {
+const Layout = ({ showLogIn, showSignUp, account, signOut}) => {
     return (
         <div className='App'>
-            <Header onCheck={onCheck} onChange={onChange} />
+            <Header account={account} showLogIn={showLogIn} showSignUp={showSignUp} signOut={signOut} />
             <div 
                 className="top-line" 
                 style={{height:'1px', 

@@ -11,8 +11,8 @@ const SignUp = ({handleClose, SignUpData}) => {
     const [password, setPassword] = useState('');
     const [passCheck, setPassCheck] = useState('');
     const [privacyP, setPrivacyP] = useState(false);
-    const [showNotValid, setShowNotValid] = useState(true)
-    const tasks = []
+    const [showNotValid, setShowNotValid] = useState(true);
+    const tasks = [];
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -25,9 +25,9 @@ const SignUp = ({handleClose, SignUpData}) => {
             passCheck !== password || 
             !privacyP){
                 setShowNotValid(false);
-            console.log(email, firstName, lastName, age, password, passCheck, privacyP );
-            return
-        }
+                console.log(email, firstName, lastName, age, password, passCheck, privacyP );
+                return
+            }
         
         SignUpData({email, firstName, lastName, age, password, tasks});
         console.log('everything went fine');
