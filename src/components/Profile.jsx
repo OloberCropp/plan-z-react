@@ -1,13 +1,13 @@
-import Profile__UserInfo from "./ProfileUserInfo"
-import Profile__SetUserInfo from "./ProfileSetUserInfo"
+import ProfileUserInfo from "./ProfileUserInfo"
+import ProfileSetUserInfo from "./ProfileSetUserInfo"
 
-const Profile = () => {
+const Profile = ({account}) => {
     return (
         <div className='Profile'>
             <div className='Profile__userInfo--wrapper'>
-                <Profile__UserInfo />
+                <ProfileUserInfo account={account} />
             </div>
-            <Profile__SetUserInfo />
+            <ProfileSetUserInfo />
         </div>
     )
 }

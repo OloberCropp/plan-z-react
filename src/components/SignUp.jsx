@@ -25,13 +25,12 @@ const SignUp = ({handleClose, SignUpData}) => {
             passCheck !== password || 
             !privacyP){
                 setShowNotValid(false);
-                console.log(email, firstName, lastName, age, password, passCheck, privacyP );
                 return
             }
         
         SignUpData({email, firstName, lastName, age, password, tasks});
-        console.log('everything went fine');
-        alert('everything went fine')
+
+        handleClose();
     }
 
     return (

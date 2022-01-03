@@ -754,8 +754,8 @@ input[type=checkbox]:hover{
 }
 
 .contacts__wrapper{
-  margin-top: 2rem;
-  width: 100%;
+  margin: 2rem auto;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -772,22 +772,66 @@ input[type=checkbox]:hover{
   min-height: 600px;
 }
 
+.contact--selected::before{
+  content:'';
+  position: absolute;
+  width: 100%;
+  height:100%;
+  top: 0;
+  left:0;
+  border-radius: .3rem;
+  animation: selectContact 10s ease infinite alternate;
+}
+
+@keyframes selectContact{
+  from{
+    border: 1px solid rgba(255, 2, 2, 0);
+  }25%{
+    border: 1px solid rgb(255, 162, 2);
+  }50%{
+    border: 1px solid rgb(2, 255, 158);
+  }75%{
+    border: 1px solid rgb(255, 2, 120);
+  }to{
+    border: 1px solid rgb(65, 2, 255);
+  }
+}
+
+
+.chat__selectedContact{
+  display: flex;
+  gap: .5rem;
+  align-self: flex-start;
+  margin: 1rem 0 .5rem 2rem;
+}
+
+.chat__selectedContact h3{
+  font-weight: 500;
+  font-family: inherit;
+}
+
 .chat{
   width: 100%;
+  min-width: 40vw;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+
+.contacts__wrapper * {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
 .chat__showMessages{
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   row-gap: .3rem;
   width: 94%;
   height: 450px;
   padding: .5rem;
   background: var(--bg-dark-opacity-normal);
-  margin: 1rem 0;
+  margin: .4rem 0;
   border-radius: .3rem;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -845,12 +889,15 @@ input[type=checkbox]:hover{
 
 .contact{
   display: flex;
+  position: relative;
   flex-direction: row;
-  column-gap: .6rem;
+  justify-content: left;
+  gap: .6rem;
   width: 100%;
   background: var(--bg-dark-opacity-light);
   border-radius: .3rem;
   padding: .7rem;
+  cursor: pointer;
 }
 
 .contact__name{
@@ -858,6 +905,48 @@ input[type=checkbox]:hover{
   font-weight: normal;
 }
 
+.contact__avatar{
+  display: inline-block;
+  min-width: 3.5rem;
+  height: 3.5rem;
+  position:static;
+  object-fit: cover;
+}
+
+.contact__nameMessage--wrapper{
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  text-align: left;
+}
+
+.contact__lastMessage{
+  font-weight: 500;
+  width: 100%;
+  opacity: .6;
+  font-size: .9rem;
+  white-space: nowrap;
+}
+
+.quickForm{
+  width: 100%;
+  position: relative;
+}
+
+.quickForm__btn{
+ position: absolute;
+ right: 0;
+ height: 100%;
+ width: 4rem;
+ border: none;
+ background: var(--font-color-bright);
+ font-family: inherit;
+ color: var(--font-color-dark);
+ border-radius: .3rem;
+ font-weight: 500;
+ opacity: 0.8;
+ cursor: pointer;
+}
 
 ::-webkit-scrollbar{
   width: 5px;
@@ -933,9 +1022,8 @@ input[type=checkbox]:hover{
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(90deg, rgb(114, 38, 38), rgb(26, 26, 80)) ;
+  background: linear-gradient(90deg, rgb(226, 255, 248), rgb(200, 180, 255)) ;
 }
-
 
 .widthAdjustment{
   width: 90%;
@@ -947,6 +1035,17 @@ input[type=checkbox]:hover{
   width: 250px;
   height: 250px;
   border-radius: 2rem;
+}
+
+.Profile__InfoNearAvatar{
+  margin-top: 2rem;
+  text-align: left;
+}
+
+.Profile__InfoNearAvatar h3{
+  font-family: 'Poppins', sans-serif;
+  font-weight:500;
+
 }
 
 .Profile__userInfo{
@@ -963,6 +1062,9 @@ input[type=checkbox]:hover{
   justify-content: center;
   width: 100vw;
   height: 100%;
+}
+
+.Profile__userInfo--wrapper{
   background: var(--bg-dark-opacity-normal);
 }
 
@@ -970,6 +1072,8 @@ input[type=checkbox]:hover{
   display: flex;
   flex-direction: column;
   margin: 2rem 0;
+  max-width: 500px;
+  color: var(--font-color-dark);
 }
 
 .SetUserInfo__form{
@@ -989,12 +1093,12 @@ input[type=checkbox]:hover{
 .SUIF__input{
   width: 100%;
   background: var(--bg-dark-opacity-normal);
+  color: var(--font-color-bright);
   border-radius: .3rem;
   border: none;
   margin-right: 2rem;
   font-size: 1.2rem;
   padding: .6rem;
-  color: inherit;
 }
 
 /* Footer styles */
@@ -1011,11 +1115,10 @@ footer{
 }
 
 .nav-avatar{
-  background-size: 100%;
-  width:3rem;
-  height:3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
-  border: 3px solid steelblue;
+  border: 1px solid whitesmoke;
   cursor: pointer;
   position: relative;
   display: flex;

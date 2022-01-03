@@ -48,7 +48,7 @@ const Header = ({ showLogIn, showSignUp, account, signOut}) => {
                     <Routes>
                         <Route path='/*' 
                         element={
-                            account.id != 0 ? 
+                            account.id !== 0 ? 
                             <>
                             <AnimatePresence initial={false} exitBeforeEnter={false}>
 
@@ -78,7 +78,7 @@ const Header = ({ showLogIn, showSignUp, account, signOut}) => {
                                                 >
                                                     <NavLink to='profile'>Profile</NavLink>
                                                     <NavLink to='settings'>Settings</NavLink>
-                                                    <button className='btn--clearDefault Link' onClick={signOut} >Sign Out</button>
+                                                    <button className='btn--clearDefault Link' onClick={signOut} style={{whiteSpace:'nowrap'}} >Sign Out</button>
                                                 </motion.div>
                                             }
                                         </AnimatePresence>

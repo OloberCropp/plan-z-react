@@ -29,21 +29,19 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [showLogIn, setShowLogIn] = useState(false);
   const [eventStatus, setEventStatus] = useState('');
-  const [chat, setChat] = useState([]);
+
   const [myContactsID, setMyContactsID] = useState([]);
   const [contacts, setContacts] = useState([]);
+  const [myChats, setMyChats] = useState([]);
+  const [chat, setChat] = useState([]);
+  const [selectedContactID, setSelectedContactID] = useState(0);
+
   const userID = account ? account.id : 0;
   const dateRN = date.toDateString();
-  
-  
-  console.log(`%cStatus ${account.status ? account.status : 'SignIn/undefined'}, and id is ${account.id}`, 'color:green; font-weight:bold; font-size:.9rem');
 
   useEffect(() => {
     const getTasks = async () =>{ 
       const userData = await fetchUser();
-      const chatData = await fetchChat(1);
-      
-      setChat(chatData.messages);
       setTasks(userData.tasks);
     }
     getTasks();
@@ -52,13 +50,30 @@ function App() {
   useEffect(()=>{
     const getContacts = async () => {
       if(myContactsID){
+
+        const userChats = await getMyChats();
+        setMyChats(userChats);
+
         const contactsInfo = await Promise.all( myContactsID.map(async (contactID) => await fetchSomeUser(contactID)));
         setContacts(contactsInfo);
       }
     }
     getContacts();
-  },[myContactsID])
-  
+  },[myContactsID]);
+    
+  useEffect(()=>{
+    if(myChats && myChats.length > 0){
+      const selectedChat = myChats.filter(chat => chat.membersID.includes(selectedContactID));
+      console.log(selectedChat);
+      if(selectedChat.length > 0){
+        setChat(selectedChat[0].messages)
+      }else{
+        createChat();
+        setChat([]);
+      }
+    }
+    // setChat(myChats.length > 0 ? myChats[0].messages : []);
+  }, [selectedContactID])
   
   const fetchUser = async () => {
     const res = await fetch(`http://localhost:5000/users/${userID}`);
@@ -83,6 +98,21 @@ function App() {
     return userTask[0];
   }
 
+  const createChat = () => {
+    const messages = [];
+    const membersID = [userID, selectedContactID];
+    const newChat = {messages, membersID};
+
+    fetch(`http://localhost:5000/chats`,
+    {
+      method: "POST",
+      headers: {
+        "Content-type":"application/json"
+      },
+      body: JSON.stringify(newChat)
+    });
+  };
+
 
   const signUp = async (SignUpData) => {
     const res = await fetch(`http://localhost:5000/users`,
@@ -101,16 +131,16 @@ function App() {
     const res = await fetch("http://localhost:5000/users");
     const usersList = await res.json();
     const userExist = await usersList.filter((user) => user.email === logInData.email);
+
     if(userExist.length < 1){
       setEventStatus('email')
-      console.log('nope email');
     }else if(userExist[0].password.toLowerCase() !== logInData.password.toLowerCase()){
       setEventStatus('password');
-      console.log('nope password');
     }else{
       setEventStatus('success')
       setAccount(userExist[0])
     }
+
   }
 
   const addTask = async (task) => {
@@ -172,35 +202,40 @@ function App() {
     )
   }
 
-  const fetchChat = async (chatID) => {
-    const res = await fetch(`http://localhost:5000/chats/${chatID}`);
-    const chat = res.json();
-    return chat;
+  const getMyChats = async () => {
+    const res = await fetch(`http://localhost:5000/chats?membersID_like=${userID}`);
+    const chats = await res.json();
+    return chats;
   }
   
   const sendMessage = async (setMessageData) => {
-    const chatID = 1;
-    let chat = await fetchChat(chatID);
+    const newChat = myChats.filter(element => element.membersID.includes(selectedContactID))[0];
     const id = Math.floor(Math.random()*10000)+1;
-    chat.messages = [...chat.messages, {...setMessageData, id}]
-    const res = await fetch(`http://localhost:5000/chats/${chatID}`,{
+    newChat.messages = [...newChat.messages, {...setMessageData, id}]
+
+    fetch(`http://localhost:5000/chats/${newChat.id}`,
+    {
       method: 'PUT',
       headers: {
         'Content-type': 'application/json'
       },
-      body: JSON.stringify(chat)
+      body: JSON.stringify(newChat)
     });
     
-    const data = await res.json();
-    setChat(chat.messages)
-    return data;
+    setChat(newChat.messages)
+  }
+
+  const signOut = () => {
+    setAccount(notExist);
+    setMyContactsID([]); 
+    setContacts([]);
   }
 
   return (     
 
     <BrowserRouter>
       <Routes>
-        <Route path='/*' element={<Layout account={account} showSignUp={()=>setShowModal(!showModal)} showLogIn={()=>setShowLogIn(!showLogIn)} signOut={()=>setAccount(notExist)} /> }>
+        <Route path='/*' element={<Layout account={account} showSignUp={()=>setShowModal(!showModal)} showLogIn={()=>setShowLogIn(!showLogIn)} signOut={signOut} /> }>
         {account.id !== 0 ?
         <>
           <Route path='/*' element={
@@ -214,8 +249,8 @@ function App() {
             <Route path='addtask' element={<AddTask onAdd={addTask} />} />
           </Route>
           <Route path='files/*' element={<FilesSection />} />
-          <Route path='contacts/*' element={<ContactsSection myID={account.id} setMessageData={sendMessage} getChat={chat} getContacts={contacts} />} />
-          <Route path='profile/*' element={<Profile />} />
+          <Route path='contacts/*' element={<ContactsSection myID={account.id} setMessageData={sendMessage} getChat={chat} myChats={myChats} getContacts={contacts} onContactSelected={(id)=>setSelectedContactID(()=>id)} selection={selectedContactID} />} />
+          <Route path='profile/*' element={<Profile account={account} />} />
           <Route path='settings/*' element={<Settings />} />
           <Route path='about/*' element={<About />} />
           <Route path='*' element={<Navigate to='/'/>} />

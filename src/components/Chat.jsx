@@ -2,10 +2,10 @@ import { useState } from "react";
 import { FaPaperclip, FaPaperPlane } from 'react-icons/fa';
 import Message from "./Message";
 
-const Chat = ({ myID, setMessageData, getChat, getContacts}) => {
+const Chat = ({ myID, setMessageData, getChat, getContacts, selection}) => {
 
     const [messageText, setMessageText] = useState('');
-    const [messageAttach, setMessageAttach] = useState(null);
+    // const [messageAttach, setMessageAttach] = useState(null);
     const onDateTime = new Date().toLocaleString().split(',');
     const sentBy = myID;
 
@@ -22,7 +22,7 @@ const Chat = ({ myID, setMessageData, getChat, getContacts}) => {
     }
     
     const getMessages = () => {
-        if(getChat.length > 0){
+        if(getChat.length > 0 || selection !== 0){
             const messagesComponents = getChat.map(message => 
                 <Message 
                     text={message.messageText} 
@@ -32,36 +32,66 @@ const Chat = ({ myID, setMessageData, getChat, getContacts}) => {
                     alignMessage={message.sentBy === myID ? 'flex-end' : 'flex-start'}
                 />
             );
-            return messagesComponents;
+            return <> 
+                    <div className='chat__selectedContact'>
+                        {getAvatar()}
+                        <h3>{getName()}</h3>
+                    </div>
+
+                    <div className='chat__showMessages'> 
+                        {messagesComponents.reverse()} 
+                    </div>
+
+                    <form className='chat__createMessage' onSubmit={onSubmit}>
+                            
+                            <FaPaperclip className='createMessage__clip' />
+
+                            <textarea 
+                                placeholder='Enter your message' 
+                                className='createMessage__textArea' 
+                                value={messageText}
+                                onChange={(e)=>setMessageText(e.target.value)} 
+                            >  
+                            </textarea>
+                            <label htmlFor='send-btn'><FaPaperPlane className='btn send-btn' /></label>
+                            <input id='send-btn' className='hidden' type="submit" />
+                    </form> 
+                    </>;
         }else{
             return <h3>There's no messages yet. Send you firs message</h3>;
         }
     }
 
+    const getSelectedContact = () => {
+        return getContacts.filter(element => element.id === selection)[0];
+    }
+
+    const getAvatar = () => {       
+        const selectedContact = getSelectedContact(); 
+
+        if(selectedContact){
+            return <img 
+            className='nav-avatar' 
+            alt='avatar' 
+            src={selectedContact.avatar ? selectedContact.avatar : 
+                'https://camo.githubusercontent.com/a7c4c268f6216f37d5c38ac9f53d4244254ebad4fea97413bd1e0dea54e51dc1/68747470733a2f2f7261772e6769746875622e636f6d2f68617368646f672f6e6f64652d6964656e7469636f6e2d6769746875622f6d61737465722f6578616d706c65732f696d616765732f6769746875622e706e67' } />
+        } 
+        else return '';   
+    }
+    
+    const getName = () => {       
+        const selectedContact = getSelectedContact(); 
+        if(selectedContact){
+            return selectedContact.firstName + ' ' + selectedContact.lastName;
+        }else return '';   
+    }
 
     return (
 
         <div className='chat'>
-            <div className='chat__selectedContact'>
-                <h3 style={{padding:'1rem 0 0 0 '}}>{ getContacts[0] ? getContacts[0].firstName + ' ' + getContacts[0].lastName : ''}</h3>
-            </div>
-            <div className='chat__showMessages'>
+            
                 {getMessages()}
-            </div>
-            <form className='chat__createMessage' onSubmit={onSubmit}>
-                    
-                    <FaPaperclip className='createMessage__clip' />
-
-                    <textarea 
-                        placeholder='Enter your message' 
-                        className='createMessage__textArea' 
-                        value={messageText}
-                        onChange={(e)=>setMessageText(e.target.value)} 
-                    >  
-                    </textarea>
-                    <label htmlFor='send-btn'><FaPaperPlane className='btn send-btn' /></label>
-                    <input id='send-btn' className='hidden' type="submit" />
-            </form>
+            
         </div>
     )
 }
